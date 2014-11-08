@@ -6,23 +6,20 @@ from models import *
 import logging
 
 app  = Flask(__name__)
-api = restful.Api(app)
-class ChildApi(restful.Resource):
-    def __init__(self):
-        self.parser = reqparse.RequestParser()
-        self.parser.add_argument('data',type=str, required=True)
-        #for key in utils.get_user_attributes(Child):
-        #    self.parser.add_argument(key, type=type(key), required=True)
 
-    def get(self,args):
-        allChildren = Child.query.all()
-        return json.dumps(allChildren)
-
-    def post(self):
+@app.route('/child', methods=['GET','POST','DELETE'])
+@app.route('/child/<child_id>', methods=['GET','POST','DELETE'])
+def child():
+    if request.method == 'GET':
         import pdb; pdb.set_trace()
-        args = self.parser.parse_args()
+        if not request.args:
+            allChildren = Child.query.all()
+            return json.dumps(allChildren)
+        else:
+            Children = Child.query.filter_by(name=args.get('name'))
+    if request.method == 'POST':
+        import pdb; pdb.set_trace()
         # Decide create/update
-        print args.data
         child_exists = bool(Child.query.filter_by(name=args.get('name')).all())
         if child_exists:
             oldChild = Child.query.filter_by(name=args.get('name')).all()
@@ -47,8 +44,7 @@ class ChildApi(restful.Resource):
             db.session.add(newChild)
             db.session.commit()
             return json.dumps({'id':newChild.id})
-
-    def delete(self,):
+    if request.method == 'DELETE':
         args = request.get_json()
         children = Child.query.filter_by(name=args.get('child_name')).all()
         assert len(children) == 1, logging.warn("Found multiple chiled records for one name ")
@@ -93,9 +89,6 @@ class ImageApi(restful.Resource):
     def get(self, filename):
         return '%s/%s' % (base_path, filename)
 
-api.add_resource(HelloWorld, '/')
-api.add_resource(ChildApi, '/child')
-api.add_resource(ImageApi, '/images/<string:filename>')
 
 if __name__ == '__main__':
     app.run(debug=True)
