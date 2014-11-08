@@ -15,8 +15,9 @@ def child(child_id=None):
             allChildren = Child.query.all()
             return json.dumps(allChildren)
         else:
-            Children = Child.query.filter_by(name=args.get('name'))
+            Children = Child.query.filter_by(id=child_id)
             return json.dumps(Children)
+
     if request.method == 'POST':
         import pdb; pdb.set_trace()
         # Decide create/update
@@ -44,28 +45,54 @@ def child(child_id=None):
             db.session.add(newChild)
             db.session.commit()
             return json.dumps({'id':newChild.id})
+
     if request.method == 'DELETE':
-        args = request.get_json()
-        children = Child.query.filter_by(name=args.get('child_name')).all()
-        assert len(children) == 1, logging.warn("Found multiple chiled records for one name ")
-        for child in children:
-            db.session.delete(child)
-        db.session.commit()
+        if not child_id:
+            logging.warn("Found multiple chiled records for one name ")
+            return json.dumps({'status':'fail'})
+        else:
+            children = Child.query.filter_by(id=child_id).all()
+            assert len(children) == 1, logging.warn("Found multiple chiled records for one name ")
+            for child in children:
+                db.session.delete(child)
+            db.session.commit()
+            return json.dumps({'status':'success'})
 
-class SurgeryApi(restful.Resource):
-    def get(self):
-        allSurgeries = Surgery.query.all()
-        return json.dumps(allSurgeries)
-
-    def post(self):
+@app.route('/surgery', methods=['GET','POST','DELETE'])
+@app.route('/surgery/<surg_id>', methods=['GET','DELETE'])
+def SurgeryApi():
+    def get():
+    if request.method == 'GET':
+        if not surg_id:
+            allSurgeries = Surgery.query.all()
+            return json.dumps(allSurgeries)
+        else:
+            Surgeries = Surgery.query.filter_by(id=surg_id)
+            return json.dumps(Surgeries)
+    if request.method == 'POST':
         pass
-    def delete(self):
-        pass
+    if request.method == 'DELETE':
+        if not surg_id:
+            logging.warn("Found multiple chiled records for one name ")
+            return json.dumps({'status':'fail'})
+        else:
+            Surgeries = Surgery.query.filter_by(id=surg_id).all()
+            assert len(Surgeries) == 1, logging.warn("Found multiple surgery records for one name ")
+            for surg in Surgeries:
+                db.session.delete(surg)
+            db.session.commit()
+            return json.dumps({'status':'success'})
 
-class TransactionsApi(restful.Resource):
-    def get(self):
-        allTransactions = Transactions.query.all()
-        return json.dumps(allTransactions)
+@app.route('/transaction', methods=['GET','POST','DELETE'])
+@app.route('/transaction/<trxn_id>', methods=['GET','DELETE'])
+def Transactions():
+    if request.method == 'GET':
+        if not trxn_id:
+            allTransactions = Transaction.query.all()
+            return json.dumps(allTransactions)
+        else:
+            Transactions = Transaction.query.filter_by(id=trxn_id)
+            return json.dumps(Transactions)
 
     def post(self):
         pass
