@@ -81,7 +81,7 @@ class Transactions(db.Model):
     donor_id = db.Column('donor', db.Integer, db.ForeignKey('donor.id'), nullable=False)
     child_id = db.Column('child', db.Integer, db.ForeignKey('child.id'), nullable=False)
     donated_amnt = db.Column(db.Float, nullable=False)
-    status = db.Column(db.String) # Enum of transaction status
+    status = db.Column(db.String(20)) # Enum of transaction status
 
 
 

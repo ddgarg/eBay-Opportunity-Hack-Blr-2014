@@ -12,9 +12,9 @@ class ChildApi(restful.Resource):
 
     def post(self,**kwargs):
         # Decide create/update
-        child_exists = bool(Child.query.filter_by(name=kwargs.get('child_name')).all())
+        child_exists = bool(Child.query.filter_by(name=kwargs.get('name')).all())
         if child_exists:
-            oldChild = Child.query.filter_by(name=kwargs.get('child_name')).all()
+            oldChild = Child.query.filter_by(name=kwargs.get('name')).all()
             for k,v in kwargs:
                 if k in utils.get_user_attributes(Child):
                     oldChild[k] = v
@@ -23,7 +23,7 @@ class ChildApi(restful.Resource):
             # update
         else:
             # create request
-            newChild = Child(kwargs.get('child_name'), kwargs.get('child_cost'), kwargs.get('child_status','new'))
+            newChild = Child(kwargs.get('name'), kwargs.get('cost'), kwargs.get('status','new'))
             db.session.add(newChild)
             db.session.commit()
             return json.dumps({'id':newChild.id})
