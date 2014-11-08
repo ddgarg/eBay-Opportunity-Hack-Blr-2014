@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <link href="css/mobileApp/kendo.mobile.common.min.css" rel="stylesheet" />
+    <link href='css/mobileApp/mobile_bootstrap.css' rel='stylesheet' type='text/css' />
+    <link href='css/mobileApp/mobile_style.css' rel='stylesheet' type='text/css' />    
+    <link href='css/mobileApp/utilities/utilities.css' rel='stylesheet' type='text/css' />
+    <link href='css/mobileApp/font-awesome.min.css' rel='stylesheet' type='text/css' />
+    <script src="cordova-2.2.0.js"></script>
+    <script data-main="js/mobileApp/common" src="js/mobileApp/lib/require.js"></script>
+</head>
+
+<body class="km-flat">
+    <div data-role="view" id="homePage" class="km-view">
+        <header data-role="header" class="km-header header pageHeader hide" id="header" data-fixed-headers="true">
+            <div class="km-leftitem Goback" data-prevpage="payPage">
+                <span class="km-text logoWithURLWrapper">
+                    <img src="images/mobileApp/logo-black.png" class="logoImg" height="90px">
+                </span>
+                <span class="km-text logoWrapper hide">
+                    <img src="images/mobileApp/logo-icon.gif" class="logoImg" height="90px">
+                </span>
+                <span class="gobackArrowWrapper hide"><i class="fa fa-angle-left"></i></span> 
+            </div>
+            <div class="km-rightitem">
+                <div class="menuIconWrapper">
+                    <a data-align="right" data-role="button" class="nav-button km-widget km-button" id="menuIcon"><i class="fa fa-ellipsis-v"></i></a>
+                </div>
+            </div>
+            <div class="pull-right basketIconWrapper"></div>
+            <div class="km-view-title">
+                <span data-role="view-title">Search Borrowers</span>
+            </div>
+            <div class="prograssBar"></div>
+        </header>
+
+        <div id="wrapper">
+            <div id="scroller">
+                <div data-role="content" class="km-content">
+
+                    <div class="row-fluid hide Pages" id="loginPage">
+                        <center>
+                            <input type="hidden" val="" class="redirctURL">
+                            <div class="loginSecWrapper grey-box clearfix" id="loginForm">
+                                <ul class="pull-left-0-im pull-left row-fluid clearfix pull-bottom-30 pull-down-0-im">
+                                    <li>
+                                        <img src="images/mobileApp/logo-black.png" class="logo" height="90px">
+                                    </li>
+                                    <li>
+                                        <p class="serverResponseMsg hide pull-0-im"></p>
+                                        <p class="loginerrorMsgforAll hide error pull-0-im">All fields are required</p>
+                                        <p class="loginerrorMsgforEmail hide error pull-0-im">Please enter valid email address</p>
+                                    </li>
+                                    <li class="pos-rel">
+                                        <i class="fa fa-user icon"></i>
+                                        <input type="email" name="email" id="email" class="required emailInput" data-errormsg="loginerrorMsgforAll" data-errormsg2="loginerrorMsgforEmail" placeholder="User Name" title="Email Address" data-role="none" />
+                                    </li>
+                                    <li class="pos-rel">
+                                        <i class="fa fa-key icon"></i>
+                                        <input type="password" name="password" id="password" class="required" data-errormsg="loginerrorMsgforAll" placeholder="Password" title="Password" data-role="none" />
+                                    </li>
+                                </ul>
+                                <div class="grey-action-box pull-left row-fluid">
+                                    <ul class="pull-0-im pull-left row-fluid">
+                                        <li class="formActionSecWrapper  formActionBtn btn">
+                                            LOGIN
+                                        </li>
+                                        <li class="pull-down-10">
+                                            <a class="" onclick="app.switchpage('forgotPassword')">Forgot password</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </center>
+                    </div>
+
+                    <div class="row-fluid hide Pages" id="forgotPasswordPage">
+                        <center>
+                            <div class="loginSecWrapper grey-box clearfix" id="forgotPasswordForm">
+                                <ul class="pull-left-0-im pull-left row-fluid clearfix pull-bottom-30 pull-down-0-im">
+                                    <li>
+                                        <img src="images/mobileApp/logo-black.png" class="logo" height="90px">
+                                    </li>
+                                    <li>
+                                        <p class="serverResponseMsg hide pull-0-im"></p>
+                                        <p class="loginerrorMsgforAll hide error pull-0-im">All fields are required</p>
+                                        <p class="loginerrorMsgforEmail hide error pull-0-im">Please enter valid email address</p>
+                                    </li>
+                                    <li class="pos-rel">
+                                        <i class="fa fa-envelope-o icon"></i>
+                                        <input type="email" name="email" id="email" class="required emailInput" data-errormsg="loginerrorMsgforAll" data-errormsg2="loginerrorMsgforEmail" placeholder="Enter your registered email-Id" title="Email Address" data-role="none" />
+                                    </li>
+                                </ul>
+                                <div class="grey-action-box pull-left row-fluid">
+                                    <ul class="pull-0-im pull-left row-fluid">
+                                        <li class="formActionSecWrapper  formActionBtn btn">
+                                            Submit
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </center>
+                    </div>
+
+                    <div class="row-fluid hide Pages" id="signupPage">
+                        <center>
+                            <input type="hidden" val="" class="redirctURL">
+                            <div class="loginSecWrapper grey-box clearfix" id="signUpForm">
+                                <ul class="pull-left-0-im pull-left row-fluid clearfix pull-bottom-30 pull-down-0-im">
+                                    <li>
+                                        <img src="images/mobileApp/logo-black.png" class="logo" height="90px">
+                                    </li>
+                                    <li>
+                                        <p class="serverResponseMsg noTextShadow hide pull-0-im"></p>
+                                        <p class="signuperrorMsgforAll hide error pull-0-im">All fields are required</p>
+                                        <p class="errorMsgforFirstname hide error pull-0-im">Name is required</p>
+                                        <p class="signuperrorMsgforEmail hide error pull-0-im">Please enter valid email address</p>
+                                        <p id="passwordsUnequal" class="hide error pull-0-im">Please make sure your passwords match</p>
+                                    </li>
+                                    <li class="pos-rel">
+                                        <i class="fa fa-user icon"></i>
+                                        <input type="text" name="first_name" id="first_name" class="required" data-errormsg="errorMsgforFirstname" placeholder="First Name" title="First Name" data-role="none">
+                                    </li>
+
+                                    <li class="pos-rel">
+                                        <i class="fa fa-user icon"></i>
+                                        <input type="text" name="last_name" id="last_name" class="required" data-errormsg="errorMsgforFirstname" placeholder="Last Name" title="Last Name" data-role="none">
+                                    </li>
+
+                                    <li class="pos-rel">
+                                        <i class="fa fa-envelope-o icon"></i>
+                                        <input type="email" name="email" id="email" class="required emailInput" data-errormsg="signuperrorMsgforAll" data-errormsg2="signuperrorMsgforEmail" placeholder="Email Address" title="Email Address" data-role="none">
+                                    </li>
+
+                                    <li class="pos-rel">
+                                        <i class="fa fa-key icon"></i>
+                                        <input type="password" name="password" id="password" class="required" data-errormsg="signuperrorMsgforAll" placeholder="Password" title="Password" data-role="none">
+                                    </li>
+
+                                    <li id="selectnationalitySec" class="pos-rel">
+                                        <select name="nationalityStatus" id="nationalityStatus">
+                                            <option value="100">Indian national</option>
+                                            <option value="99">Foreign national</option>
+                                        </select>
+                                    </li>
+                                </ul>
+                                <div class="grey-action-box pull-left row-fluid">
+                                    <ul class="pull-0-im pull-left row-fluid">
+                                        <li class="formActionSecWrapper  formActionBtn btn">
+                                            Sign Up
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </center>
+                    </div>
+
+                    <div class="row-fluid km-navbar km-sub-navbar hide" data-role="navbar">
+                        <div class="km-view-title">
+                            <div class="investPageNavWrapper hide pageNav">
+                                <ul class="nav btn-group dashboardPageNav km-buttongroup km-two-button" data-role="buttongroup">
+                                    <li data-hrefname="allborrowers" class="km-state-active km-button">
+                                        <span class="km-text">
+                                                <i class="fa fa-users"></i>&nbsp; Borrowers</span>
+                                    </li>
+                                    <li class="km-button" data-hrefname="activestates">
+                                        <span class="km-text">
+                                                <i class="fa fa-globe"></i>&nbsp; States</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="dashboardPageNavWrapper hide pageNav">
+                                <ul class="nav btn-group dashboardPageNav km-buttongroup km-two-button" data-role="buttongroup">
+                                    <li class="km-state-active km-button" data-hrefname="portfolio">
+                                        <span class="km-text">
+                                                <i class="fa fa-user"></i>&nbsp; Portfolio</span>
+                                    </li>
+                                    <li data-hrefname="quickInvestDetails" class="km-button">
+                                        <span class="km-text">
+                                                <i class="fa fa-paper-plane"></i>&nbsp; Quick Invest</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="settingsPageNavWrapper hide pageNav">
+                                <ul class="nav btn-group dashboardPageNav km-buttongroup" data-role="buttongroup">
+                                    <li data-hrefname="autoInvest" class="km-button">
+                                        <span class="km-text">Auto Invest</span>
+                                    </li>
+                                    <li data-hrefname="settings" class="km-state-active  km-button">
+                                        <span class="km-text">Settings</span>
+                                    </li>
+                                    <li data-hrefname="notifications" class="km-button">
+                                        <span class="km-text">Notifications</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="learnmorePageNavWrapper hide pageNav">
+                                <ul class="nav btn-group featuredPageNav km-buttongroup" data-role="buttongroup">
+                                    <li class="km-state-active km-button" data-hrefname="aboutrangdePage">
+                                        <span class="km-text">About Rang De</span>
+                                    </li>
+                                    <li data-hrefname="howrangdeworksPage" class="km-button">
+                                        <span class="km-text">How Rang De Works</span>
+                                    </li>
+                                    <li data-hrefname="faqPage" class="km-button">
+                                        <span class="km-text">FAQ</span>
+                                    </li>
+                                    <!-- <li data-hrefname="feedbackPage" class="km-button"><span class="km-text">Feedback</span></li> -->
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="Pages hide" id="noNetworkConnectionPage">
+                        <center>
+                            <i class="icon-rss rotate-45-left icon-4x"></i>
+                            <br/>
+                            <h3>No Internet Connection</h3>
+                            <span class="f9">Please check and refresh</span>
+                            <br/>
+                            <button class="btn btn-blue" onclick="location.reload();">Refresh</button>
+                        </center>
+                    </div>
+
+                    <div class="borrower-list investPages Pages page-center-align" id="investPage">
+                        <ul class="borrower-list-content row-fluid pull-down-20">
+                            <!-- Borrower list will be loaded here -->
+                        </ul>
+                    </div>
+
+                    <div id="states-list" class="hide investPages Pages page-center-align" style="margin-bottom:40px;">
+                        <ul class="row-fluid clearfix grey-box-flex states-list-wrapper radioButtongroup">
+                            <li class="statesListLink active" data-stateid="" data-statename="">
+                                <i class="fa icon active fa-dot-circle-o"></i>&nbsp; All States
+                            </li>
+                            <!-- States list will be loaded here -->
+                        </ul>
+                    </div>
+
+                    <div id="borroweProfile-panel" class="investPages Pages page-center-align">
+
+                    </div>
+
+                    <div class="Pages page-center-align hide" id="reviewPage">
+                        <p class="alert alert-info subtitle-small hide noborrowersalert">No borrowers in your basket :(
+                            <br>
+                            <a href="/invest.html">Please Select some borrowers</a>
+                        </p>
+                        <ul class="review-borrower-list-content row-fluid pull-down-20">
+                            <!-- Borrower list will be loaded here -->
+                        </ul>
+                    </div>
+
+                    <div class="Pages page-center-align hide" id="selectgroupPage">
+                        <div class="km-listview-wrapper">
+                            <ul id="groupList" data-role="listview" data-style="inset" class="km-listview km-list km-listinset">
+                                <!-- The groups will be inserted here -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="Pages page-center-align hide" id="payPage">
+                        <div class="info-section">
+                            Balance Amount To Pay:
+                            <i class="fa fa-inr"></i>
+                            <span class="totalAmountRemaining"></span>
+                        </div>
+                        <div class="row-fluid">
+                            <h3 class="sectionsHeading">How would you like to pay?</h3>
+                            <ul class="pull-0-im payOptionsList">
+                                <li class="fcUserPayInfoMsg hide">
+                                    <p class="alert alert-info">For now there is no payment gateway option for foreign users, Please use your Rang De credit to pay the borrower need amount</p>
+                                </li>
+                                <li class="" onclick="app.switchpage('rangdecreditPayPage')">
+                                    <img src="images/mobileApp/logo-icon.gif" alt="" class="icon rangde">&nbsp; Use Rang De Credit
+                                </li>
+                                <li class="neftPayOption" onclick="app.switchpage('neftPayPage')">
+                                    <i class="fa fa-money icon"></i>&nbsp; Make a Bank Transfer
+                                </li>
+                                <li class="chequePayOption" onclick="app.switchpage('chequePayPage')">
+                                    <i class="fa fa-credit-card icon"></i>&nbsp; Drop a Cheque
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="Pages page-center-align hide" id="rangdecreditPayPage">
+                        <div class="info-section">Balance Amount To Pay:
+                            <i class="fa fa-inr"></i>
+                            <span class="totalAmountRemaining"></span>
+                        </div>
+                        <ul class="row-fluid clearfix grey-box-flex">
+                            <li class="fcUserPayInfoMsg hide">
+                                <p class="alert alert-info">For now there is no payment gateway option for foreign users, Please use your Rang De credit to pay the borrower need amount</p>
+                            </li>
+                            <li>
+                                <div class="row-fluid pull-left txt-left">
+                                    <h1 class="mainHeading pull-0-im">
+                                            <i class="fa fa-inr"></i>
+                                            <span class="totalCredit"></span>
+                                        </h1>
+                                    <p>Available Rang De Credit</p>
+                                </div>
+                                <div class="row-fluid pull-left txt-left">
+                                    <p class="pull-0-im error creditAmounterror dn">Enter valid credit amount</p>
+                                    <div class="pull-left payByCreditSec amountInputSecWrapper">
+                                        <div class="amountMinus" data-input="usedCredit">
+                                            <i class="fa fa-minus"></i>
+                                        </div>
+                                        <input type="number" id="usedCredit" class="amountInputSec investAmountTextBox usedCredit numericOnly" placeholder="Enter Amount" title="Enter Amount" maxlength="6" pattern="[0-9]*" value="0" data-max-input="0" />
+                                        <div class="amountPlus" data-input="usedCredit">
+                                            <i class="fa fa-plus"></i>
+                                        </div>
+                                        <button class="investBtn btn btn-large btn-success amounInputSubmitBtn">Use</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="continuePaymentSec hide txt-left row-fluid pull-left">
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="Pages page-center-align hide" id="neftPayPage">
+                        <div class="info-section">Balance Amount To Pay:
+                            <i class="fa fa-inr"></i>
+                            <span class="totalAmountRemaining"></span>
+                        </div>
+                        <h3 class="sectionsHeading pull-bottom-0-im pull-down-30">Select Rang De's Bank account to which you would will transfer funds to</h3>
+                        <ul class="bankOptionsList">
+                            <li class="banks" data-bankid="1">HDFC Bank</li>
+                            <li class="banks" data-bankid="2">ICICI Bank</li>
+                            <li class="banks" data-bankid="3">IDBI Bank</li>
+                        </ul>
+                    </div>
+
+                    <div class="Pages page-center-align hide" id="chequePayPage">
+                        <div class="info-section">Balance Amount To Pay:
+                            <i class="fa fa-inr"></i>
+                            <span class="totalAmountRemaining"></span>
+                        </div>
+                        <h3 class="sectionsHeading pull-bottom-0-im pull-down-30">Select the bank/ATM to drop your cheque</h3>
+                        <ul class="bankOptionsList">
+                            <li class="chequeBanks" data-bankid="1">HDFC Bank</li>
+                            <li class="chequeBanks" data-bankid="2">ICICI Bank</li>
+                            <li class="chequeBanks" data-bankid="3">IDBI Bank</li>
+                        </ul>
+                    </div>
+
+                    <div class="Pages page-center-align hide" id="bankDetailsPage">
+                        <p class="alert alert-info helpText hide neftHelpText">You can make an NEFT transfer from your bank account (with any bank) to one of Rang De's Bank accounts listed below.</p>
+                        <p class="alert alert-info helpText hide chequeHelpText">You can <strong>drop a cheque (drawn on any bank)</strong> at an ATM of any of the following banks.</p>
+                        <div class="bankDetails">
+                            <!-- Banks Details -->
+                        </div>
+                        <p class="helpText push-down-10 hide neftHelpText">* We request you to pay the complete amount through NEFT within 3 days.</p>
+                        <p class="helpText push-down-10 hide chequeHelpText">* We request you to pay the complete amount through a cheque drop within 3 days</p>
+                    </div>
+
+
+                    <div class="Pages page-center-align hide" id="balanceAmountPage">
+                        <div class="info-section">Balance Amount To Pay:
+                            <i class="fa fa-inr"></i>
+                            <span class="totalAmountRemaining"></span>
+                        </div>
+                        <div class="row-fluid">
+                            <h3 class="sectionsHeading">How would you like to pay the balance amount?</h3>
+                            <ul class="pull-0-im payOptionsList">
+                                <li class="neftPayOption" onclick="app.switchpage('neftPayPage')">
+                                    <i class="fa fa-money icon"></i>&nbsp; Make a Bank Transfer
+                                </li>
+                                <li class="chequePayOption" onclick="app.switchpage('chequePayPage')">
+                                    <i class="fa fa-credit-card icon"></i>&nbsp; Drop a Cheque
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="Pages page-center-align hide" id="thankyouPage">
+                        <center>
+                            <h3 class="mainHeading green">Thank you for your social investment</h3>
+                            <h3 class="pull-left-0-im row-fluid clearfix txt-center">Impact Summary</h3>
+                            <ul class="row-fluid clearfix grey-box-flex">
+                                <li class="span6 divider-right">
+                                    <h1 class="mainHeading">
+                                            <i class="fa fa-inr"></i>
+                                            <span class="totalAmount"></span>
+                                        </h1>
+                                    <p>Social Investments</p>
+                                </li>
+                                <li class="span6 pull-left-0-im">
+                                    <h1 class="mainHeading">
+                                            <span class="totalBorrowers"></span>
+                                        </h1>
+                                    <p>Borrowers Impacted</p>
+                                </li>
+                            </ul>
+                            <div class="row-fluid hide grey-box-flex autoInvestSecwrapper">
+                                <h3 class="pull-left-0-im">Auto Invest</h3>
+                                <p></p>
+                                <div class="onoffswitch" id="autoInvestStatus">
+                                    <label class="onoffswitch-label" data-value="false" data-input="#autoInvestStatus">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </center>
+                    </div>
+
+                    <ul id="investors-list" class="hide featuredPages Pages">
+                        <!-- Featured Social Investors List will be loaded here -->
+                    </ul>
+
+                    <ul id="AMBASSADOR-list" class="hide featuredPages Pages">
+                        <!-- Featured Social Investors List will be loaded here -->
+                    </ul>
+
+                    <ul id="CORPORATE-list" class="hide featuredPages Pages">
+                        <!-- Featured Social Investors List will be loaded here -->
+                    </ul>
+
+                    <div class="row-fluid hide dashBoardPages Pages page-center-align" id="portfolioPageContent">
+                        <center>
+                            <ul class="row-fluid clearfix grey-box-flex txt-center">
+                                <li class="span6 divider-right">
+                                    <h1 class="mainHeading">
+                                            <i class="fa fa-inr"></i>
+                                            <span class="rangdeCredit"></span>
+                                        </h1>
+                                    <p>Rang De Credit</p>
+                                </li>
+                                <li class="span6 pull-left-0-im">
+                                    <h1 class="mainHeading livesImpacted"></h1>
+                                    <p>Lives Impacted</p>
+                                </li>
+                                <li class="row-fluid pull-left pull-down-10">
+                                    <p class="btn btn-success btn-reinvest">Re-Invest</p>
+                                </li>
+                            </ul>
+
+                            <h3 class="pull-left-0-im row-fluid clearfix txt-center">Portfolio</h3>
+                            <ul class="row-fluid clearfix grey-box-flex txt-center">
+                                <li class="span6 divider-right">
+                                    <h1 class="mainHeading">
+                                            <i class="fa fa-inr"></i>
+                                            <span class="investments"></span>
+                                        </h1>
+                                    <p>Investments</p>
+                                </li>
+                                <li class="span6 pull-left-0-im">
+                                    <h1 class="mainHeading">
+                                            <i class="fa fa-inr"></i>
+                                            <span class="repayments"></span>
+                                        </h1>
+                                    <p>Repayments</p>
+                                </li>
+                                <li class="span6 divider-right pull-left-0-im">
+                                    <h1 class="mainHeading">
+                                            <i class="fa fa-inr"></i>
+                                            <span class="withdrawls"></span>
+                                        </h1>
+                                    <p>Withdrawals</p>
+                                </li>
+                                <li class="span6 pull-left-0-im">
+                                    <h1 class="mainHeading">
+                                            <i class="fa fa-inr"></i>
+                                            <span class="donations"></span>
+                                        </h1>
+                                    <p>Donations</p>
+                                </li>
+                                <li class="row-fluid pull-left pull-down-10 clearfix btn btn-primary btn-showall investmentSummaryPagelinkSec">See all details</li>
+                            </ul>
+                        </center>
+                    </div>
+
+                    <div class="row-fluid hide Pages page-center-align" id="quickInvestDetails">
+                        <div class="row-fluid clearfix grey-box-flex">
+                            <ul class="row-fluid pull-left txt-left pull-bottom-0-im">
+                                <li>
+                                    <strong>How much would you like to invest?</strong>
+                                </li>
+                                <li class="quickInvestAmountError error hide">Enter an amount less than Rs.1,00,000</li>
+                                <li class="amountInputSecWrapper row-fluid pull-left">
+                                    <div class="amountMinus" data-input="quickInvestAmount">
+                                        <i class="fa fa-minus"></i>
+                                    </div>
+                                    <input type="number" id="quickInvestAmount" class="amountInputSec investAmountTextBox" placeholder="Enter Amount" title="Enter your Investment Amount" maxlength="6" pattern="[0-9]*" value="0" data-max-input="100000">
+                                    <div class="amountPlus" data-input="quickInvestAmount">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                    <button id="quickInvestBtn" class="investBtn btn btn-large btn-success amounInputSubmitBtn">Invest</button>
+                                    <button class="hide checkout quickInvestCheckout btn btn-large btn-warning amounInputSubmitBtn" data-loanid="18449">Checkout</button>
+                                </li>
+                                <li class="quickInvestMoreOptionShow row-fluid pull-left linkTxt pull-down-20">
+                                    More option <i class="fa fa-angle-double-right"></i>
+                                </li>
+                                <li class="quickInvestMoreOptionHide hide row-fluid pull-left linkTxt pull-down-20">
+                                    <i class="fa fa-angle-double-left"></i> Hide option
+                                </li>
+                            </ul>
+                            <ul class="quickInvestMoreOptionWrapper hide row-fluid pull-left txt-left">
+                                <!-- <li class="f10">Preferences: (We will try our best to accommodate these preferences)</li> -->
+                                <li class="quickInvestAmountPerBorrowerError error hide">Please enter an amount less than total Investment amount.</li>
+                                <li>Investment per borrower</li>
+                                <li class="amountInputSecWrapper pull-left">
+                                    <div class="amountMinus" data-input="quickInvestAmountPerBorrower">
+                                        <i class="fa fa-minus"></i>
+                                    </div>
+                                    <input type="number" id="quickInvestAmountPerBorrower" class="amountInputSec investAmountTextBox" placeholder="Enter Amount" title="Enter your Investment Amount" maxlength="6" pattern="[0-9]*" value="0" data-max-input="15000">
+                                    <div class="amountPlus" data-input="quickInvestAmountPerBorrower">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </li>
+                                <li class="row-fluid pull-left pull-down-20">Select sector</li>
+                                <li class="row-fluid pull-left pull-down-10">
+                                    <ul class="checkButtongroup" id="sectorIds">
+                                        <li class="check_button_icon anySecId active" data-value="0" data-status="true"><i class="fa fa-check-square-o"></i><i class="fa fa-square-o"></i>&nbsp; Any</li>
+                                        <li class="check_button_icon inactive" data-value="1" data-status="false"><i class="fa fa-check-square-o"></i><i class="fa fa-square-o"></i>&nbsp; Microcredit</li>
+                                        <li class="check_button_icon inactive" data-value="2" data-status="false"><i class="fa fa-check-square-o"></i><i class="fa fa-square-o"></i>&nbsp; Education</li>
+                                        <li class="check_button_icon inactive" data-value="3" data-status="false"><i class="fa fa-check-square-o"></i><i class="fa fa-square-o"></i>&nbsp; Microventure</li>
+                                        <li class="check_button_icon inactive" data-value="4" data-status="false"><i class="fa fa-check-square-o"></i><i class="fa fa-square-o"></i>&nbsp; Field Partner Staff Loans</li>
+                                        <li class="check_button_icon inactive" data-value="5" data-status="false"><i class="fa fa-check-square-o"></i><i class="fa fa-square-o"></i>&nbsp; Vocational Loans</li>
+                                        <li class="check_button_icon inactive" data-value="6" data-status="false"><i class="fa fa-check-square-o"></i><i class="fa fa-square-o"></i>&nbsp; Community Projects</li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                            <p class="quickInvestStatus row-fluid pull-left hide"><span class="totalBorrowers"></span> borrower(s) found</p>
+
+                        </div>
+                    </div>
+
+                    <div class="row-fluid hide dashBoardPages Pages page-center-align" id="investmentSummaryPage">
+                        <h3 class="pull-left-0-im row-fluid clearfix txt-center">Investments</h3>
+                        <ul class="row-fluid clearfix grey-box-flex txt-center">
+                            <li class="span6 divider-right">
+                                <h1 class="mainHeading">
+                                        <i class="fa fa-inr"></i>
+                                        <span class="totalInvestments">0</span>
+                                    </h1>
+                                <p>Total Investment</p>
+                            </li>
+                            <li class="span6 pull-left-0-im">
+                                <h1 class="mainHeading">
+                                        <i class="fa fa-inr"></i>
+                                        <span class="totalRepaid">0</span>
+                                    </h1>
+                                <p>Total Repaid</p>
+                            </li>
+                            <li class="span6 divider-right pull-left-0-im">
+                                <h1 class="mainHeading">
+                                        <i class="fa fa-inr"></i>
+                                        <span class="totalCaptial">0</span>
+                                    </h1>
+                                <p>Total Fresh Captial</p>
+                            </li>
+                            <li class="span6 pull-left-0-im">
+                                <h1 class="mainHeading">
+                                        <i class="fa fa-inr"></i>
+                                        <span class="totalReinvestments">0</span>
+                                    </h1>
+                                <p>Total Reinvestment</p>
+                            </li>
+                        </ul>
+
+                        <h3 class="pull-left-0-im row-fluid clearfix txt-center">Repayments</h3>
+                        <ul class="row-fluid clearfix grey-box-flex txt-center">
+                            <li class="span6 divider-right">
+                                <h1 class="mainHeading">
+                                        <i class="fa fa-inr"></i>
+                                        <span class="principalRepaid">0</span>
+                                    </h1>
+                                <p>Principal Repaid</p>
+                            </li>
+                            <li class="span6 pull-left-0-im">
+                                <h1 class="mainHeading">
+                                        <i class="fa fa-inr"></i>
+                                        <span class="interestRepaid">0</span>
+                                    </h1>
+                                <p>Interest Repaid</p>
+                            </li>
+                        </ul>
+
+                        <h3 class="pull-left-0-im row-fluid clearfix txt-center">Withdrawals</h3>
+                        <ul class="row-fluid clearfix grey-box-flex txt-center">
+                            <li class="row-fluid">
+                                <h1 class="mainHeading">
+                                        <i class="fa fa-inr"></i>
+                                        <span class="totalWithdraw">0</span>
+                                    </h1>
+                                <p>Total Withdrawal</p>
+                            </li>
+                        </ul>
+
+                        <h3 class="pull-left-0-im row-fluid clearfix txt-center">Donations</h3>
+                        <ul class="row-fluid clearfix grey-box-flex txt-center">
+                            <li class="span6 divider-right">
+                                <h1 class="mainHeading">
+                                        <i class="fa fa-inr"></i>
+                                        <span class="contributesToRangDe">0</span>
+                                    </h1>
+                                <p>Contributed to Rang De</p>
+                            </li>
+                            <li class="span6 pull-left-0-im">
+                                <h1 class="mainHeading">
+                                        <i class="fa fa-inr"></i>
+                                        <span class="interestContributesToRangDe">0</span>
+                                    </h1>
+                                <p>Interest Contributed to Rang De</p>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div class="autoInvestSettingsSec dashBoardPages Pages page-center-align hide" id="autoInvestSettingsSec">
+                        <div class="row-fluid hide grey-box-flex autoInvestSecwrapper">
+                            <h3 class="pull-left-0-im">Auto Invest</h3>
+                            <p></p>
+                            <div class="onoffswitch autoInvestStatus2" id="autoInvestStatus">
+                                <label class="onoffswitch-label" data-value="false" data-input=".autoInvestStatus2">
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="autoInvestSettingsControlsWrapper hide">
+                            <p class="errorMsg hide alert alert-error"></p>
+                            <ul class="row-fluid clearfix grey-box-flex checkButtongroup" id="autoInvestSettingsControls">
+                                <li class="check_button_icon maxAmountPerBorrowerCheckBox inactive" data-value="maxAmountPerBorrowerCheckBox" data-status="false"><i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i>&nbsp; Investment per borrower:
+                                </li>
+                                <li class="row-fluid pull-left hide maxAmountPerBorrowerWrapper">
+                                    <p class="text-italic pull-0-im row-fluid pull-left">Please enter amount in multiple of hundred.</p>
+                                    <div class="amountInputSecWrapper row-fluid pull-left">
+                                        <div class="amountMinus" data-input="maxAmountPerBorrower">
+                                            <i class="fa fa-minus"></i>
+                                        </div>
+                                        <input type="number" id="maxAmountPerBorrower" class="amountInputSec investAmountTextBox numericOnly" placeholder="Enter Amount" title="Enter Amount" maxlength="6" pattern="[0-9]*" value="0" data-max-input="100000" />
+                                        <div class="amountPlus" data-input="maxAmountPerBorrower">
+                                            <i class="fa fa-plus"></i>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="check_button_icon inactive" data-value="constributeInterest" data-status="false"><i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i>&nbsp; Contribute your interest on investment to Rang De
+                                </li>
+                                <li class="check_button_icon inactive" data-value="avoidTobacco" data-status="false"><i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i>&nbsp; Do not invest in tobacco business</li>
+                                <li class="check_button_icon inactive" data-value="avoidMeat" data-status="false"><i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i>&nbsp; Do not invest in meat business</li>
+                                <li class="row-fluid pull-left">
+                                    <div class="formActionSecWrapper specialForm row-fluid">
+                                        <p class="txt-center">
+                                            <a class="formActionBtn btn" id="updateAutoInvestSettings">Update Settings</a>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row-fluid dashBoardPages Pages hide page-center-align" id="notificationPageContent">
+                        <p class="errorMsg hide alert alert-error"></p>
+                        <ul class="row-fluid clearfix grey-box-flex checkButtongroup" id="notificationOptions">
+                            <li>Choose emails you want to receive from Rang De</li>
+                            <li class="check_button_icon inactive" data-value="repaymentAlert" data-status="false"><i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i>&nbsp; Loan Repayment Notification
+                            </li>
+                            <p>Get notified as soon as your investment is repaid.</p>
+                            <li class="check_button_icon inactive" data-value="evaluationReportAlert" data-status="false"><i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i>&nbsp; Borrower Evaluation Notification
+                            </li>
+                            <p>We periodically evaluate our borrowers on the field. You will get notified as soon as your borrower is evaluated on the field.</p>
+                            <li class="check_button_icon inactive" data-value="disbursmentNotification" data-status="false"><i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i>&nbsp; Loan Disbursement Notification
+                            </li>
+                            <p>Your social investment will be disbursed after we raise the loan requirement for a group of borrowers.
+                                <br/>Choose this option to get notified as soon as your loan is disbursed to the borrowers you have invested in.</p>
+                            <li class="check_button_icon inactive" data-value="loanMatureNotification" data-status="false"><i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i>&nbsp; Loan Maturity Notification
+                            </li>
+                            <p>Once your social investment is fully repaid by your borrowers, you will get notified.</p>
+                            <li class="row-fluid pull-left">
+                                <div class="formActionSecWrapper specialForm row-fluid">
+                                    <p class="txt-center">
+                                        <a class="formActionBtn btn" id="updateAlertSettings">Update Settings</a>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+
+                    <div class="row-fluid dashBoardPages Pages hide page-center-align" id="notificationPageContent">
+                        <p class="successMsg hide alert alert-success">Your Settings Successfully Updated</p>
+                        <p class="errorMsg hide alert alert-error"></p>
+                        <ul>
+                            <li>Choose emails you want to receive from Rang De</li>
+                            <li>
+                                <label class="km-listview-label">
+                                    <input type="checkbox" id="repaymentAlert" name="repaymentAlert" class="alerts">
+                                    <strong>Loan Repayment Notification</strong>
+                                    <br>Get notified as soon as your investment is repaid.
+                                </label>
+                            </li>
+                            <li>
+                                <label class="km-listview-label">
+                                    <input type="checkbox" id="evaluationReportAlert" name="evaluationReportAlert" class="alerts">
+                                    <strong>Borrower Evaluation Notification</strong>
+                                    <br>We periodically evaluate our borrowers on the field. You will get notified as soon as your borrower is evaluated on the field.
+                                </label>
+                            </li>
+                            <li>
+                                <label class="km-listview-label">
+                                    <input type="checkbox" id="disbursmentNotification" name="disbursmentNotification" class="alerts">
+                                    <strong>Loan Disbursement Notification</strong>
+                                    <br>Your social investment will be disbursed after we raise the loan requirement for a group of borrowers.
+                                    <br>Choose this option to get notified as soon as your loan is disbursed to the borrowers you have invested in.
+                                </label>
+                            </li>
+                            <li>
+                                <label class="km-listview-label">
+                                    <input type="checkbox" id="loanMatureNotification" name="loanMatureNotification" class="alerts">
+                                    <strong>Loan Maturity Notification</strong>
+                                    <br>Once your social investment is fully repaid by your borrowers, you will get notified.
+                                </label>
+                            </li>
+                            <li>
+                                    <label class="km-listview-label">
+                                        <input type="checkbox" id="newsletterAcStmtSubscription" name="newsletterAcStmtSubscription" class="alerts">
+                                        <strong>Newsletter and Account Statement Email</strong>
+                                        <br>We will send your account statement and newsletter monthly.
+										 Choose this option to receive that email.
+                                    </label>
+                            </li>
+                        </ul>
+                        <div class="formActionSecWrapper specialForm">
+                            <center>
+                                <a class="formActionBtn btn" id="updateAlertSettings">Update Settings</a>
+                            </center>
+                        </div>
+                    </div>
+
+                    <div class="hide dashBoardPages formPage Pages page-center-align" id="settingsPageContent">
+                        <p class="successMsg hide alert alert-success" id="settingsPageContent_successMsg">Your Settings Successfully Updated</p>
+                        <p class="errorMsg hide alert alert-error"></p>
+                        <ul class="row-fluid clearfix grey-box-flex flex-form txt-left">
+                            <li class="fieldWrapper">First Name
+                                <br/>
+                                <input type="text" name="first_name" id="first_name" class="required" data-errormsg="errorMsgforAll" title="First Name" data-role="none">
+                            </li>
+
+                            <li class="fieldWrapper">Last Name
+                                <br/>
+                                <input type="text" name="last_name" id="last_name" title="Last Name" data-role="none">
+                            </li>
+
+                            <li class="fieldWrapper">City
+                                <br/>
+                                <input type="text" name="city" id="city" class="required emailInput" data-errormsg="errorMsgforAll" data-errormsg2="errorMsgforEmail" title="your city name" data-role="none">
+                            </li>
+
+                            <li class="fieldWrapper">State
+                                <br/>
+                                <input type="text" name="state" id="state" class="required emailInput" data-errormsg="errorMsgforAll" data-errormsg2="errorMsgforEmail" title="your state name" data-role="none">
+                            </li>
+
+                            <li class="fieldWrapper">Country
+                                <br/>
+                                <input type="text" name="country" id="country" class="required emailInput" data-errormsg="errorMsgforAll" data-errormsg2="errorMsgforEmail" title="Your country name" data-role="none">
+                            </li>
+
+                            <li class="radioListWrapper fieldWrapper">Profile Privacy
+                                <br/>
+                                <input type="hidden" id="Profile_Privacy" value="1" />
+                                <ul class="radioButtongroup Profile_Privacy">
+                                    <li class="radio_button_icon" data-value="1" data-bind="Profile_Privacy"><i class="fa fa-circle-o icon inactive"></i>&nbsp; Public</li>
+                                    <li class="radio_button_icon" data-value="2" data-bind="Profile_Privacy"><i class="fa fa-circle-o icon inactive"></i>&nbsp; Semi Public</li>
+                                    <li class="radio_button_icon" data-value="3" data-bind="Profile_Privacy"><i class="fa fa-dot-circle-o icon active"></i>&nbsp; Private</li>
+                                </ul>
+                                <!-- <input type="radio" name="Profile_Privacy" id="private" value="1" data-bind="checked: colors">
+                                    <input type="radio" name="Profile_Privacy" id="semiPublic" value="2" data-bind="checked: colors">
+                                    <input type="radio" name="Profile_Privacy" id="public" value="3" data-bind="checked: colors"> -->
+                            </li>
+
+                            <li class="textareaWrapper fieldWrapper row-fluid pull-left pull-down-20">
+                                About Yourself
+                                <br/>
+                                <textarea id="aboutUser" cols="4" rows="4" width="95%"></textarea>
+                            </li>
+
+                            <li class="textareaWrapper fieldWrapper row-fluid pull-left pull-down-20">
+                                Why you believe in Rang De
+                                <textarea id="beliveInRangDe" cols="4" rows="4" width="95%"></textarea>
+                            </li>
+
+                            <li>
+                                <div class="formActionSecWrapper specialForm row-fluid pull-left">
+                                    <center>
+                                        <a class="formActionBtn btn" id="updateSettings">Update Settings</a>
+                                    </center>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <table class="table table-bordered dashBoardPages Pages hide page-center-align pull-down-20" id="recentActivityPageContent">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Transaction Type</th>
+                            </tr>
+                        </thead>
+                        <tbody class="recentActivityList">
+                        </tbody>
+                    </table>
+
+                    <div class="row-fluid dashBoardPages Pages hide page-center-align" id="aboutrangdePage">
+                        <div class="km-listview-wrapper">
+                            <div class="swiper-container about-rangde-swiper-container">
+                                <div class="swiper-wrapper">
+                                    <!--First Slide-->
+                                    <div class="swiper-slide">
+                                        <h3>About Rang De</h3>
+                                        <p class="f12">We're a not-for-profit organization committed to fighting poverty by providing access to affordable micro loans to underserved communities in India. Join us.</p>
+                                    </div>
+
+                                    <!--Second Slide-->
+                                    <div class="swiper-slide">
+                                        <h3>Invest. In people. In potential. In pride.</h3>
+                                        <p class="f12">1 out of 4 people in rural India live below the poverty line. Help change that statistic.
+                                            <br/>Experience Social Investing with Rang De.</p>
+                                    </div>
+
+                                    <!--Third Slide-->
+                                    <div class="swiper-slide">
+                                        <h3>Invest. In opportunity. In empowerment. In hands.</h3>
+                                        <p class="f12">
+                                            <br/>Experience Social Investing with Rang De.Invest.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Slide Pagination -->
+                                <div class="swiper-pagination about-rangde-pagination">
+                                    <span class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span>
+                                    <span class="swiper-pagination-switch"></span>
+                                    <span class="swiper-pagination-switch"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-fluid dashBoardPages Pages hide" id="howrangdeworksPage">
+                        <div class="km-listview-wrapper">
+                            <ul data-role="listview" data-style="inset" class="km-listview km-list km-listinset">
+                                <li>
+                                    <div class="pull-left txt-center howrangdeworksSec">
+                                        <p class="howrangdeworks searchBorrowers center-align"></p>
+                                        <div class="">
+                                            <h4 class="small-grey-heading-withoutmargin">Choose Borrower</h4>
+                                            <p>Rang De will select borrowers based on the preferences set by you.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="pull-left txt-center howrangdeworksSec">
+                                        <p class="howrangdeworks invest center-align"></p>
+                                        <div class="">
+                                            <h4 class="small-grey-heading-withoutmargin">Invest</h4>
+                                            <p>Enter the amount you want to invest in rural entrepreneurs or students.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="pull-left txt-center howrangdeworksSec">
+                                        <p class="howrangdeworks getRepaid center-align"></p>
+                                        <div class="">
+                                            <h4 class="small-grey-heading-withoutmargin">Get Repaid</h4>
+                                            <p>The borrowers will return your loan with interest on monthly basis.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row-fluid dashBoardPages Pages hide" id="faqPage">
+                        <div class="km-listview-wrapper">
+                            <ul data-role="listview" data-style="inset" class="km-listview km-list km-listinset">
+                                <li>
+                                    <h3 class="main-heading">Making a social investment for the first time?
+                                            <br>Discover the joys of making a social investment and helping an individual overcome poverty.</h3>
+                                </li>
+                                <li>
+                                    <h4 class="small-grey-heading">Wonder what Rang De is all about?</h4>
+                                    <p>Rang De is a non-profit initiative that supports rural entrepreneurs with microloans for their business. Through our online platform, we help you support a specific entrepreneur with a social investment of Rs.100 or more!</p>
+                                </li>
+                                <li>
+                                    <h4 class="small-grey-heading">Want to know more about social investing?</h4>
+                                    <p>Well, it’s just about helping someone overcome Poverty. In this case you also decide who you want to support and the individual you have supported repays your money with a small interest.</p>
+                                </li>
+                                <li>
+                                    <h4 class="small-grey-heading">Worried about how much of your money will reach the individual you choose?</h4>
+                                    <p>We understand the value of your money and your desire to make a difference. We take great pride in the fact that 100% of your contribution goes to the individual you have chosen!</p>
+                                </li>
+                                <li>
+                                    <h4 class="small-grey-heading">Concerned about the genuinity of the borrowers?</h4>
+                                    <p>Individuals listed on the website have been screened by our NGO field partners and then by our team before the loan is approved. So, you can rest assured that individuals have been screened.</p>
+                                </li>
+                                <li>
+                                    <h4 class="small-grey-heading">Curious to know how you will choose an individual?</h4>
+                                    <p>You can search for individuals based on state or activity. Read through their story and invest Rs.100 or more.</p>
+                                </li>
+                                <li>
+                                    <h4 class="small-grey-heading">If it's an investment, you will want to know how you will get the money back?</h4>
+                                    <p>As and when the individual repays the money, we will credit it into your Rang De account. You can reinvest this or withdraw it.</p>
+                                </li>
+                                <li>
+                                    <h4 class="small-grey-heading">Anxious about entering your card details online?</h4>
+                                    <p>All our social investments take place over secure connections and your credit/debit card details are safe. Secure online transactions keep your bank and card provider in the loop as well</p>
+                                </li>
+                                <li>
+                                    <h4 class="small-grey-heading">Want to get started right away?</h4>
+                                    <p>Thanks for making up your mind. Get started with your email id and a password.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row-fluid Pages formPage hide" id="feedbackPage">
+                        <div class="specialForm">
+                            <ul>
+                                <li class="successMsg hide alert alert-success ">
+                                    Your Feedback sent Successfully.
+                                </li>
+                                <li class="errorMsg hide alert alert-error "></li>
+                                <li>Your Suggestions(within 500 characters)
+                                    <textarea name="" id="" class="feedbackText" placeholder="Please tell Rang De the specific of your problem or your suggestions"></textarea>
+                                </li>
+                                <li>Email:
+                                    <input type="text" name="emailId" id="emailId" class="required emailInput" data-errormsg="errorMsgforAll" data-errormsg2="errorMsgforEmail" placeholder="Enter your email id" title="your email id">
+
+                                </li>
+                                <li>
+                                    Choose the type of feedback
+                                    <select name="select-custom-1" id="select-custom-1" data-native-menu="false">
+                                        <option value="1">An error ocurred when installing app</option>
+                                        <option value="2">user experience design</option>
+                                        <option value="3">unsatisfactory features</option>
+                                        <option value="4">not suitable for my device</option>
+                                        <option value="5">report a bug</option>
+                                        <option value="6">other</option>
+                                    </select>
+
+                                </li>
+
+                                <li class="formActionSecWrapper row-fluid pull-left ">
+                                    <p class="txt-center">
+                                        <a class="formActionBtn btn btn-success btn-large" id="updateSettings">Send</a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer data-role="footer" class="km-footer pageFooter hide" id="footer">
+            <ul class="footerLinksWrapper footerSec hide">
+
+            </ul>
+            <div id="checkoutNotification" class="checkoutNextStep row-fluid footerSec hide">
+                <h1 class="checkoutDetails"> 
+					Total Borrowers: <strong id="basketTotal" class="basketTotal"></strong> | 
+					Total Amount: <strong><i class="fa fa-inr"></i></strong><strong id="basketTotalAmount" class="basketTotalAmount"></strong> 
+				</h1>
+                <p class="checkoutBigBtn continuePayment" data-href="">
+                    Continue to Payment
+                    <a class="rightArrowWrapper"> <i class="fa fa-angle-double-right"></i> 
+                    </a>
+                </p>
+            </div>
+            <div id="continueToPaymentPage" class="checkoutNextStep row-fluid footerSec hide">
+                <h1 class="checkoutDetails"> 
+					Amount remaining: <strong><i class="fa fa-inr"></i></strong><strong class="totalAmountRemaining">0</strong>
+				</h1>
+                <p class="checkoutBigBtn continuePayment" data-href="balanceAmountPage">
+                    Continue to Payment
+                    <a class="rightArrowWrapper"> <i class="fa fa-angle-double-right"></i> 
+                    </a>
+                </p>
+            </div>
+            <div id="finishPayment" class="row-fluid footerSec hide">
+
+            </div>
+            <div id="quickInvestCheckoutNotification" class="row-fluid footerSec hide">
+                <h1 class="checkoutDetails"> 
+                        Selected Borrowers: <strong id="quickInvestbasketTotal" class="basketTotal">0</strong> | 
+                        Investment Amount: <strong id="quickInvestbasketTotalAmount" class="basketTotalAmount">0</strong> 
+                    </h1>
+                <p class="checkoutBigBtn continuePayment" data-href="qucikInvesPayPage">
+                    Continue to Payment
+                    <a class="rightArrowWrapper"><i class="fa fa-angle-double-right"></i></a>
+                </p>
+            </div>
+        </footer>
+
+    </div>
+
+    <div class="loading hide">
+        <img src="images/mobileApp/ajax-loader.gif" alt="" class="loaderImg" />
+    </div>
+
+    <div id="nav-panel" class="hide navMenuSecWrapper">
+        <div class="navWrapper" id="navWrapper">
+            <ul class="nav-menu-list">
+                <li>
+                    <a onclick="app.switchpage('dashboard')">Dashboard</a>
+                </li>
+                <li>
+                    <a onclick="app.switchpage('browse')">Browse</a>
+                </li>
+                <li>
+                    <a onclick="app.switchpage('settings')">Settings</a>
+                </li>
+                <li>
+                    <a onclick="app.switchpage('recentActivity')">Transactions</a>
+                </li>
+                <li>
+                    <a onclick="app.switchpage('learnmore')">About Rang De</a>
+                </li>
+                <li class='signOutSec'>
+                    <a onclick="app.switchpage('logout')">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class='row-fluid globalMenuSecWrapper hide' id='globalMenu'>
+        <div class='globalMenuInner'>
+            <ul class='menuList'>
+                <li class='aboutUsPageLink' onclick="app.switchpage('learnmore')">About Us</li>
+                <li class='homePageLink' onclick="app.switchpage('dashboard')">Dashboard</li>
+                <li class='exitAppLink'>Exit App</li>
+            </ul>
+        </div>
+    </div>
+    <div id="templates"></div>
+    <a href="#" id="closeAppConfirmMsg" class='hide' data-role="button">Open Dialog</a>
+    <a href="#" id="noNetworkMsg" class='hide' data-role="button">Network Dialog</a>
+    <a href="#" id="menuOptions" class='hide' data-role="button">Show menu options</a> 
+</body>
+
+</html>
