@@ -76,11 +76,11 @@ class Transactions(db.Model):
     donor_id = db.Column('donor', db.Integer, db.ForeignKey('donor.id'), nullable=False)
 
 
-class Receipt(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    paid = db.Column(db.Float, nullable=False) # Tobe auto populated
-    donor = db.relationship('Donor',
-                        backref=db.backref('donor',lazy='joined'), lazy='dynamic')
+#class Receipt(db.Model):
+#    id = db.Column(db.Integer, primary_key=True)
+#    paid = db.Column(db.Float, nullable=False) # Tobe auto populated
+#    donor = db.relationship('Donor',
+#                        backref=db.backref('donor',lazy='joined'), lazy='dynamic')
 
 
 def get_child_funds(child_id):

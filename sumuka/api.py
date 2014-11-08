@@ -16,7 +16,10 @@ class ChildApi(restful.Resource):
         if child_exists:
             oldChild = Child.query.filter_by(name=kwargs.get('child_name')).all()
             for k,v in kwargs:
-
+                if k in utils.get_user_attributes(Child):
+                    oldChild[k] = v
+            db.session.add(oldChild)
+            db.session.commit()
             # update
         else:
             # create request
@@ -37,6 +40,7 @@ class HelloWorld(restful.Resource):
         return {"hello": "world"}
 
 api.add_resource(HelloWorld, '/')
+api.add_resource(ChildApi, '/child')
 
 if __name__ == '__main__':
     app.run(debug=True)
