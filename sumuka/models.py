@@ -25,7 +25,13 @@ base_path = os.path.join(os.path.dirname(__file__), 'static')
 
 payment_type_enums = ('onetime','standing')
 child_status_enums = ('new', 'in progress', 'finished')
+# new -- no treat ment done
+# in progress -- halfway through surgeries
 trxn_status_enums = ('success', 'failure')
+surg_status_enums = ('waiting', 'scheduled','finished')
+# waiting -- waiting for funds
+# scheduled -- date scheduled, funds accrued.
+
 # Create models
 class Child(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -36,18 +42,17 @@ class Child(db.Model):
     surgeries = db.Column(db.String(500))  # Json dump of list of Surgery ids. hoping 500 is enough
     status = db.Column(db.String(20)) # Enum of progress
 
-    # def __init__(self, name=None, cost=0, status='new', **kwargs):
-    #     self.name = name
-    #     self.cost = cost
-    #     assert status in child_status_enums
-    #     self.status = status
-    #     for each in kwargs.keys():
-    #         if each in utils.get_user_attributes():
-    #             vars(self).update({each:kwargs.get(each)})
-
+    def __init__(self, name=None, cost=0, status='new', **kwargs):
+        self.name = name
+        self.cost = cost
+        self.status = status
+        for each in kwargs.keys():
+            if each in utils.get_user_attributes(Child):
+                vars(self).update({each:kwargs.get(each)})
+        assert self.status in child_status_enums
 
     def __repr__(self):
-        return '<User %r>' % self.name
+        return '<Child %r>' % self.name
 
 class Donor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -57,24 +62,38 @@ class Donor(db.Model):
     email_id = db.Column(db.String(64),nullable=False)
     phone = db.Column(db.String(20))
 
-    # def __init__(self, name=None, donated_amnt=None,email=None, p_type='onetime', **kwargs):
-    #     assert p_type in payment_type_enums, "Wrong payment type sent"
-    #     self.name  = name
-    #     self.donated_amnt = donated_amnt
-    #     self.payment_type = p_type
-    #     self.email_id = email
-    #     # From here http://stackoverflow.com/questions/6760536/python-iterating-through-constructors-arguments
-    #     for each in kwargs.keys():
-    #         if each in utils.get_user_attributes():
-    #             vars(self).update({each:kwargs.get(each)})
+    def __repr__(self):
+        return '<Donor %r>' % self.name
+
+    def __init__(self, name=None, donated_amnt=None,email=None, p_type='onetime', **kwargs):
+        self.name  = name
+        self.donated_amnt = donated_amnt
+        self.payment_type = p_type
+        self.email_id = email
+        # From here http://stackoverflow.com/questions/6760536/python-iterating-through-constructors-arguments
+        for each in kwargs.keys():
+            if each in utils.get_user_attributes(Donor):
+                vars(self).update({each:kwargs.get(each)})
+        assert self.payment_type in payment_type_enums, "Wrong payment type sent"
 
 class Surgery(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     cost = db.Column(db.Float, nullable=False)
+    name = db.Column(db.String(50))
     deformity = db.Column(db.String(100))
     status = db.Column(db.String(30)) # Enum list of strings
     date = db.Column(db.Date)
     hospital = db.Column(db.String(50))
+
+    def __init__(self, name=None, deformity=None, cost=0, status='waiting', **kwargs):
+        self.cost = cost
+        self.name = name
+        self.deformity = deformity
+        self.status = status
+        for each in kwargs.keys():
+            if each in utils.get_user_attributes(Surgery):
+                vars(self).update({each:kwargs.get(each)})
+        assert self.status in surg_status_enums, 'Wrong surgical status given'
 
 class Transactions(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -83,7 +102,11 @@ class Transactions(db.Model):
     donated_amnt = db.Column(db.Float, nullable=False)
     status = db.Column(db.String(20)) # Enum of transaction status
 
-
+    def __init__(self, **kwargs):
+        for each in kwargs.keys():
+            if each in utils.get_user_attributes(Transactions):
+                vars(self).update({each:kwargs.get(each)})
+        assert self.status in trxn_status_enums, logging.warn('invalid transaction status')
 
 #class Receipt(db.Model):
 #    id = db.Column(db.Integer, primary_key=True)

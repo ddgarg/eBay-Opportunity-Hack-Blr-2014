@@ -38,8 +38,9 @@ def child(child_id=None):
             return json.dumps(Children)
 
     if request.method == 'POST':
-        import pdb; pdb.set_trace()
+        #import pdb; pdb.set_trace()
         # Decide create/update
+        args = dict()
         child_exists = bool(Child.query.filter_by(name=args.get('name')).all())
         if child_exists:
             oldChild = Child.query.filter_by(name=args.get('name')).all()
