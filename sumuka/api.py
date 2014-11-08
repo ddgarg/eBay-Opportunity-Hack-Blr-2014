@@ -93,20 +93,44 @@ def Transactions():
         else:
             Transactions = Transaction.query.filter_by(id=trxn_id)
             return json.dumps(Transactions)
-
-    def post(self):
-        pass
-    def delete(self):
+    if request.method == 'POST':
         pass
 
-class DonorApi(restful.Resource):
-    def get(self):
-        allDonors = Donor.query.all()
-        return json.dumps(allDonors)
-    def post(self):
+    if request.method == 'DELETE':
+        if not trxn_id:
+            logging.warn("Found multiple chiled records for one name ")
+            return json.dumps({'status':'fail'})
+        else:
+            Transactions = Transaction.query.filter_by(id=trxn_id).all()
+            assert len(Transactions) == 1, logging.warn("Found multiple surgery records for one name ")
+            for trxn in Transactions:
+                db.session.delete(trxn)
+            db.session.commit()
+                return json.dumps({'status':'success'})
+
+@app.route('/transaction', methods=['GET','POST','DELETE'])
+@app.route('/transaction/<trxn_id>', methods=['GET','DELETE'])
+def Donors():
+    if request.method == 'GET':
+        if not trxn_id:
+            allDonors = Donor.query.all()
+            return json.dumps(allDonors)
+        else:
+            Donors = Donor.query.filter_by(id=trxn_id)
+            return json.dumps(Donors)
+    if request.method == 'POST':
         pass
-    def delete(self):
-        pass
+    if request.method == 'DELETE':
+        if not donor_id:
+            logging.warn("Found multiple chiled records for one name ")
+            return json.dumps({'status':'fail'})
+        else:
+            Donors = Donor.query.filter_by(id=donor_id).all()
+            assert len(Donors) == 1, logging.warn("Found multiple surgery records for one name ")
+            for donor in Donors:
+                db.session.delete(donor)
+            db.session.commit()
+            return json.dumps({'status':'success'})
 
 class HelloWorld(restful.Resource):
     def get(self):
