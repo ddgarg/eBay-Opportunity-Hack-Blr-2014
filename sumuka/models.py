@@ -1,5 +1,4 @@
 import os
-import os.path as op
 
 from werkzeug import secure_filename
 from sqlalchemy import event
@@ -7,6 +6,7 @@ from sqlalchemy import event
 from flask import Flask, request, render_template
 from flask.ext.sqlalchemy import SQLAlchemy
 
+import utils
 # Create application
 app = Flask(__name__)
 
@@ -21,29 +21,30 @@ app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
 
 # Figure out base upload path
-base_path = op.join(op.dirname(__file__), 'static')
+base_path = os.path.join(os.path.dirname(__file__), 'static')
 
 payment_type_enums = ('onetime','standing')
-
-def get_user_attributes(cls):
-    boring = dir(type('dummy', (object,), {}))
-    return [item
-            for item in inspect.getmembers(cls)
-            if item[0] not in boring]
+child_status_enums = ('new', 'in progress', 'finished')
+trxn_status_enums = ('success', 'failure')
 # Create models
 class Child(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20))
     address = db.Column(db.String(100))
-    pic_path = db.Column(db.String(64))
+    pic_paths = db.Column(db.String(500)) # Json dump of list of pic files. hoping to hell 500 is enough
     donors = db.Column(db.String(500))  # Json dump of list of donor ids. hoping 500 is enough
     surgeries = db.Column(db.String(500))  # Json dump of list of Surgery ids. hoping 500 is enough
     status = db.Column(db.String(20)) # Enum of progress
 
-    def __init__(self, name, cost, status, **kwargs):
+    def __init__(self, name, cost, status='new', **kwargs):
         self.name = name
         self.cost = cost
+        assert status in child_status_enums
         self.status = status
+        for each in kwargs.keys():
+            if each in utils.get_user_attributes():
+                vars(self).update({each:kwargs.get(each)})
+
 
     def __repr__(self):
         return '<User %r>' % self.name
@@ -64,7 +65,7 @@ class Donor(db.Model):
         self.email_id = email
         # From here http://stackoverflow.com/questions/6760536/python-iterating-through-constructors-arguments
         for each in kwargs.keys():
-            if each in get_user_attributes():
+            if each in utils.get_user_attributes():
                 vars(self).update({each:kwargs.get(each)})
 
 class Surgery(db.Model):
@@ -78,13 +79,17 @@ class Surgery(db.Model):
 class Transactions(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     donor_id = db.Column('donor', db.Integer, db.ForeignKey('donor.id'), nullable=False)
+    child_id = db.Column('child', db.Integer, db.ForeignKey('child.id'), nullable=False)
+    donated_amnt = db.Column(db.Float, nullable=False)
+    status = db.Column(db.String(20)) # Enum of transaction status
 
 
-class Receipt(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    paid = db.Column(db.Float, nullable=False) # Tobe auto populated
-    donor = db.relationship('Donor',
-                        backref=db.backref('donor',lazy='joined'), lazy='dynamic')
+
+#class Receipt(db.Model):
+#    id = db.Column(db.Integer, primary_key=True)
+#    paid = db.Column(db.Float, nullable=False) # Tobe auto populated
+#    donor = db.relationship('Donor',
+#                        backref=db.backref('donor',lazy='joined'), lazy='dynamic')
 
 
 def get_child_funds(child_id):
@@ -94,19 +99,4 @@ def get_child_funds(child_id):
     """
     pass
 
-## Register after_delete handler which will delete image file after model gets deleted
-#@event.listens_for(ChildImage, 'after_delete')
-#def _handle_image_delete(mapper, conn, target):
-#    try:
-#        if target.path:
-#            os.remove(op.join(base_path, target.path))
-#    except:
-#        pass
-#
-
-# Simple page to show images
-
-#@app.route('/child')
-#def children():
-#    children = db.session.query(Child).all()
 
