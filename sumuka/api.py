@@ -1,6 +1,4 @@
 from flask import Flask, url_for
-from flask.ext.restful import reqparse
-from flask.ext import restful
 from flask.ext.admin import Admin, form
 from flask.ext.admin.contrib.sqla import ModelView
 import json
@@ -25,7 +23,7 @@ def donation():
 def donationDetails():
     email = request.form.get("email")
     phone = request.form.get("phone")
-    details = {"name":"Rohan","amount":"1000","status":"Operated"}
+    details = [{"name":"Rohan","amount":"1000","status":"Operated"}]
     #details = json.loads(details)
     #TODO get the details from db and pass to donation details.html
     return render_template("donationdetails.html", details=details)
