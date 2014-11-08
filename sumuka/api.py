@@ -8,15 +8,15 @@ import logging
 app  = Flask(__name__)
 
 @app.route('/child', methods=['GET','POST','DELETE'])
-@app.route('/child/<child_id>', methods=['GET','POST','DELETE'])
-def child():
+@app.route('/child/<child_id>', methods=['GET','DELETE'])
+def child(child_id=None):
     if request.method == 'GET':
-        import pdb; pdb.set_trace()
-        if not request.args:
+        if not child_id:
             allChildren = Child.query.all()
             return json.dumps(allChildren)
         else:
             Children = Child.query.filter_by(name=args.get('name'))
+            return json.dumps(Children)
     if request.method == 'POST':
         import pdb; pdb.set_trace()
         # Decide create/update
