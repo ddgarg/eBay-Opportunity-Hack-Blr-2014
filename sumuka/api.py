@@ -1,6 +1,8 @@
 from flask import Flask
 from flask.ext.restful import reqparse
 from flask.ext import restful
+from flask.ext.admin import Admin
+from flask.ext.admin.contrib.sqla import ModelView
 import json
 from models import *
 import logging
@@ -96,6 +98,13 @@ class ImageApi(restful.Resource):
 api.add_resource(HelloWorld, '/')
 api.add_resource(ChildApi, '/child')
 api.add_resource(ImageApi, '/images/<string:filename>')
+
+
+admin = Admin(app)
+admin.add_view(ModelView(Child,db.session))
+admin.add_view(ModelView(Donor,db.session))
+admin.add_view(ModelView(Transactions,db.session))
+admin.add_view(ModelView(Surgery,db.session))
 
 if __name__ == '__main__':
     app.run(debug=True)
