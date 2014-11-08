@@ -163,26 +163,22 @@ class ImageApi(restful.Resource):
 admin = Admin(app)
 admin.add_view(ModelView(Child,db.session))
 admin.add_view(ModelView(Donor,db.session))
-admin.add_view(ModelView(Transactions,db.session))
+#admin.add_view(ModelView(Transactions,db.session))
 admin.add_view(ModelView(Surgery,db.session))
 
 if __name__ == '__main__':
 
     app.config.update(
         DEBUG=True,
-        SECRET_KEY='sdfjalskdfj'
+        SECRET_KEY='sdfjalskdfj',
     )
-
-
     # Create upload directory
     try:
         os.mkdir(base_path)
     except OSError:
         pass
-
     # Create DB
     db.create_all()
-
     # Start app
     app.run(debug=True)
 

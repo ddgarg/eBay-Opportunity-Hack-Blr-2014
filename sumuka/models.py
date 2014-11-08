@@ -36,14 +36,14 @@ class Child(db.Model):
     surgeries = db.Column(db.String(500))  # Json dump of list of Surgery ids. hoping 500 is enough
     status = db.Column(db.String(20)) # Enum of progress
 
-    def __init__(self, name, cost, status='new', **kwargs):
-        self.name = name
-        self.cost = cost
-        assert status in child_status_enums
-        self.status = status
-        for each in kwargs.keys():
-            if each in utils.get_user_attributes():
-                vars(self).update({each:kwargs.get(each)})
+    # def __init__(self, name=None, cost=0, status='new', **kwargs):
+    #     self.name = name
+    #     self.cost = cost
+    #     assert status in child_status_enums
+    #     self.status = status
+    #     for each in kwargs.keys():
+    #         if each in utils.get_user_attributes():
+    #             vars(self).update({each:kwargs.get(each)})
 
 
     def __repr__(self):
@@ -57,16 +57,16 @@ class Donor(db.Model):
     email_id = db.Column(db.String(64),nullable=False)
     phone = db.Column(db.String(20))
 
-    def __init__(self, name, donated_amnt,email, p_type='onetime', **kwargs):
-        assert p_type in payment_type_enums, "Wrong payment type sent"
-        self.name  = name
-        self.donated_amnt = donated_amnt
-        self.payment_type = p_type
-        self.email_id = email
-        # From here http://stackoverflow.com/questions/6760536/python-iterating-through-constructors-arguments
-        for each in kwargs.keys():
-            if each in utils.get_user_attributes():
-                vars(self).update({each:kwargs.get(each)})
+    # def __init__(self, name=None, donated_amnt=None,email=None, p_type='onetime', **kwargs):
+    #     assert p_type in payment_type_enums, "Wrong payment type sent"
+    #     self.name  = name
+    #     self.donated_amnt = donated_amnt
+    #     self.payment_type = p_type
+    #     self.email_id = email
+    #     # From here http://stackoverflow.com/questions/6760536/python-iterating-through-constructors-arguments
+    #     for each in kwargs.keys():
+    #         if each in utils.get_user_attributes():
+    #             vars(self).update({each:kwargs.get(each)})
 
 class Surgery(db.Model):
     id = db.Column(db.Integer, primary_key=True)
