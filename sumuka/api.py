@@ -78,7 +78,6 @@ def child(child_id=None):
 @app.route('/surgery', methods=['GET','POST','DELETE'])
 @app.route('/surgery/<surg_id>', methods=['GET','DELETE'])
 def SurgeryApi():
-    def get():
     if request.method == 'GET':
         if not surg_id:
             allSurgeries = Surgery.query.all()
@@ -123,7 +122,7 @@ def Transactions():
             for trxn in Transactions:
                 db.session.delete(trxn)
             db.session.commit()
-                return json.dumps({'status':'success'})
+            return json.dumps({'status':'success'})
 
 @app.route('/transaction', methods=['GET','POST','DELETE'])
 @app.route('/transaction/<trxn_id>', methods=['GET','DELETE'])
