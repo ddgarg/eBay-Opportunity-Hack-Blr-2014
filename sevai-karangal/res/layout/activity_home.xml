@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    android:background="@drawable/homescreen">
+
+    <Button
+        android:id="@+id/request"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/request"
+        android:layout_marginTop="250dp"
+        android:onClick="openRequestActivity" />
+
+    <Button
+        android:id="@+id/donate"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/donate"
+		android:layout_marginTop="5dp" 
+		android:onClick="openDonateActivity" />
+
+</LinearLayout>

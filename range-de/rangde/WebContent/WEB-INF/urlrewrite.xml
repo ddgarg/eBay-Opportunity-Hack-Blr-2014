@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//www.tuckey.org//DTD UrlRewrite 3.2//EN" "http://www.tuckey.org/res/dtds/urlrewrite3.2.dtd">
+<urlrewrite>
+
+
+	<rule>
+	    <from>^/(faq.htm)$</from>
+	    <to type="redirect">frequently-asked-questions</to>
+	</rule>
+	<rule>
+	    <from>^/(frequently-asked-questions.htm)$</from>
+	    <to type="redirect">frequently-asked-questions</to>
+	</rule>
+	
+
+	<rule>
+	   	<from>^/(how-rang-de-works.htm)$</from>
+	   	<to type="redirect">how-rang-de-works</to>
+	</rule>
+
+	<rule>
+	   	<from>^/(team.htm)$</from>
+	   	<to type="redirect">team</to>
+	</rule>
+
+
+  </urlrewrite>

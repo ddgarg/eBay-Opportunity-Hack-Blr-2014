@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+  <welcome-file-list>
+    <welcome-file>index.htm</welcome-file>
+  </welcome-file-list>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext.xml,
+      classpath:applicationContext-hibernate.xml</param-value>
+  </context-param>
+  
+  <context-param>
+        <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
+        <param-value>/WEB-INF/views/tiles-config/tiles-def.xml</param-value>
+  </context-param>
+
+  <listener>
+        <listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
+  </listener>
+
+
+ <!--  Struts Filter -->
+  <filter>
+       <filter-name>struts2</filter-name>
+       <filter-class>
+           org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
+       </filter-class>
+  </filter>  
+  <!--  URL rewrite filter -->
+  <filter>
+   		<filter-name>UrlRewriteFilter</filter-name>
+   		<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+   		<init-param>
+	             <param-name>statusPath</param-name>
+	             <param-value>/status</param-value>
+	    </init-param>
+  </filter>
+ <!--  Filter Mappings -->
+ <filter-mapping>
+	    <filter-name>struts2</filter-name>
+	    <url-pattern>/struts/*</url-pattern>
+  </filter-mapping>
+ <filter-mapping>
+	   <filter-name>struts2</filter-name>
+	   <url-pattern>*.action</url-pattern>
+	   <dispatcher>FORWARD</dispatcher>
+	   <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+
+  <filter-mapping>
+	    <filter-name>UrlRewriteFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
+  <servlet>
+    <servlet-name>rangde</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>rangde</servlet-name>
+    <url-pattern>*.htm</url-pattern>
+  </servlet-mapping>
+ 
+<!--  page not found-->
+  <error-page>
+    <error-code>404</error-code>
+    <location>/404.html</location>
+    </error-page>
+    <error-page>
+<!--    internal server error-->
+    <error-code>500</error-code>
+    <location>/500.html</location>
+    </error-page>
+<!--    service unavailable-->
+    <error-page>
+    <error-code>503</error-code>
+    <location>/503.html</location>
+    </error-page>
+
+</web-app>
+
