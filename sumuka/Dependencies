@@ -1,3 +1,7 @@
 flask-restful
 flask-sqlalchemy
 flask-admin
+
+PIL or pillow
+run this before installing PIL if you have any trouble
+sudo apt-get install libjpeg-dev zlib1g-dev
