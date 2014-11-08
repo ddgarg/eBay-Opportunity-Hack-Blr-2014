@@ -65,7 +65,7 @@ class Donor(db.Model):
     def __repr__(self):
         return '<Donor %r>' % self.name
 
-    def __init__(self, name=None, donated_amnt=None,email=None, p_type='onetime', **kwargs):
+    def __init__(self, name=None, donated_amnt=0,email=None, p_type='onetime', **kwargs):
         self.name  = name
         self.donated_amnt = donated_amnt
         self.payment_type = p_type
