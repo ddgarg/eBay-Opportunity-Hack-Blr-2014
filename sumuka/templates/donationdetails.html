@@ -112,32 +112,27 @@ window.onmouseup=right;
                         who, due to their socio-economic circumstances, cannot afford 
                         
                         such treatment.</p><br />
-                        <form action="/donation">
-                        <input type="image" style="height:60px;width:180px;padding-left:200px;" src="static/images.jpg" >
-                        </form>
-
-                        <br><br><br>
-                        <h4>Know you donation details</h4>>
-                        <form id="contactform" action="/donationDetails" class="form" style="background:none;"> 
-           
-          <p class="contact"><label for="email">Email</label></p> 
-          <input id="email" name="email" placeholder="example@domain.com" required="" type="email"> 
-                
         
-          <p class="contact"><label for="phone">Phone</label></p> 
-          <input id="phone" name="phone" placeholder="Contact No." required="" type="text">
- 
-              <br><br>
-            <input style="background:#18BE05;" class="buttom" name="submit" id="submit" tabindex="5" value="Donation Details" type="submit">    
-   </form></div>
                         </div>
                 </div>
          </td><!--endc2-->
+
+
+
          
          <td width="2%" height="100%" align="right"><!--c3--><img src="http://sumukha-foundation.org/images/line-1.png" width="6" height="375" align="right" /></td><!--endc3-->
 
                </tr><!--box2tabler1end-->
       </table><!--box2tableend-->  
+      <table width="100%">
+      <tr><th>Child Name</th><th>Amount Donated</th><th>Status</th></tr>
+      <h4>Details here using a for loop {{ details }}</h4>
+         {% for entry in details %}
+          <tr><td>{{ entry.name}}</td>
+          <td>{{ entry.amount}}</td>
+          <td>{{ entry.status}}</td></tr>
+         {% endfor %}
+         </table>
        </div><!--box2-->
 
 </td><!--contentinnertablec1end-->
