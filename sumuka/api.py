@@ -107,5 +107,9 @@ admin.add_view(ModelView(Transactions,db.session))
 admin.add_view(ModelView(Surgery,db.session))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.config.update(
+    DEBUG=True,
+    SECRET_KEY='sdfjalskdfj'
+)
+    app.run()
 
