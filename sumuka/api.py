@@ -35,12 +35,41 @@ class ChildApi(restful.Resource):
             db.session.delete(child)
         db.session.commit()
 
+class SurgeryApi(restful.Resource):
+    def get(self):
+        pass
+    def post(self):
+        pass
+    def delete(self):
+        pass
+
+class TransactionsApi(restful.Resource):
+    def get(self):
+        pass
+    def post(self):
+        pass
+    def delete(self):
+        pass
+
+class DonorApi(restful.Resource):
+    def get(self):
+        pass
+    def post(self):
+        pass
+    def delete(self):
+        pass
+
 class HelloWorld(restful.Resource):
     def get(self):
         return {"hello": "world"}
 
+class ImageApi(restful.Resource):
+    def get(self, filename):
+        return '/images/%s' % filename
+
 api.add_resource(HelloWorld, '/')
 api.add_resource(ChildApi, '/child')
+api.add_resource(ImageApi, '/images')
 
 if __name__ == '__main__':
     app.run(debug=True)

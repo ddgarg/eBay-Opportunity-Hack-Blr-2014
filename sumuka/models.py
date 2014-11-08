@@ -25,12 +25,13 @@ base_path = os.path.join(os.path.dirname(__file__), 'static')
 
 payment_type_enums = ('onetime','standing')
 child_status_enums = ('new', 'in progress', 'finished')
+trxn_status_enums = ('success', 'failure')
 # Create models
 class Child(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20))
     address = db.Column(db.String(100))
-    pic_path = db.Column(db.String(64))
+    pic_paths = db.Column(db.String(500)) # Json dump of list of pic files. hoping to hell 500 is enough
     donors = db.Column(db.String(500))  # Json dump of list of donor ids. hoping 500 is enough
     surgeries = db.Column(db.String(500))  # Json dump of list of Surgery ids. hoping 500 is enough
     status = db.Column(db.String(20)) # Enum of progress
@@ -40,6 +41,10 @@ class Child(db.Model):
         self.cost = cost
         assert status in child_status_enums
         self.status = status
+        for each in kwargs.keys():
+            if each in utils.get_user_attributes():
+                vars(self).update({each:kwargs.get(each)})
+
 
     def __repr__(self):
         return '<User %r>' % self.name
@@ -74,6 +79,10 @@ class Surgery(db.Model):
 class Transactions(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     donor_id = db.Column('donor', db.Integer, db.ForeignKey('donor.id'), nullable=False)
+    child_id = db.Column('child', db.Integer, db.ForeignKey('child.id'), nullable=False)
+    donated_amnt = db.Column(db.Float, nullable=False)
+    status = db.Column(db.String) # Enum of transaction status
+
 
 
 #class Receipt(db.Model):
