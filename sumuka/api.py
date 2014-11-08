@@ -38,12 +38,12 @@ def child(child_id=None):
             return json.dumps(Children)
 
     if request.method == 'POST':
-        #import pdb; pdb.set_trace()
         # Decide create/update
-        args = dict()
-        child_exists = bool(Child.query.filter_by(name=args.get('name')).all())
+        args = request.form
+        child_exists = Child.query.filter_by(name=args.get('name')).all()
         if child_exists:
-            oldChild = Child.query.filter_by(name=args.get('name')).all()
+            assert len(child_exists) ==  1, logging.warn("Too many child records found in db")
+            oldChild = child_exists[0]
             if request.files:
                 # upload files
                 bytestring = request.files.get('imgFile')[0].body
@@ -53,7 +53,7 @@ def child(child_id=None):
                 pic_paths = json.loads(oldChild.pic_paths)
                 oldChild.pic_paths = pic_paths.append(file_path)
                 oldChild.pic_paths = oldChild.pic_paths[-5:] # Max 5 images
-            for k,v in args:
+            for k,v in args.iteritems():
                 if k in utils.get_user_attributes(Child):
                     oldChild[k] = v
             db.session.add(oldChild)
@@ -89,7 +89,23 @@ def SurgeryApi():
             Surgeries = Surgery.query.filter_by(id=surg_id)
             return json.dumps(Surgeries)
     if request.method == 'POST':
-        pass
+        args = request.form
+        surgery_exists = Surgery.query.filter_by(name=args.get('name')).all()
+        if surgery_exists:
+            assert len(surgery_exists) ==  1, logging.warn("Too many surgery records found in db")
+            oldSurgery = surgery_exists[0]
+            for k,v in args.iteritems():
+                if k in utils.get_user_attributes(Surgery):
+                    oldSurgery[k] = v
+            db.session.add(oldSurgery)
+            db.session.commit()
+            # update
+        else:
+            # create request
+            newSurgery = Surgery(args.get('name'), args.get('cost'), args.get('status','new'))
+            db.session.add(newSurgery)
+            db.session.commit()
+            return json.dumps({'id':newSurgery.id})
     if request.method == 'DELETE':
         if not surg_id:
             logging.warn("Found multiple chiled records for one name ")
@@ -104,16 +120,32 @@ def SurgeryApi():
 
 @app.route('/transaction', methods=['GET','POST','DELETE'])
 @app.route('/transaction/<trxn_id>', methods=['GET','DELETE'])
-def Transactions():
+def Transaction():
     if request.method == 'GET':
         if not trxn_id:
-            allTransactions = Transaction.query.all()
+            allTransactions = Transactions.query.all()
             return json.dumps(allTransactions)
         else:
-            Transactions = Transaction.query.filter_by(id=trxn_id)
+            Transactions = Transactions.query.filter_by(id=trxn_id)
             return json.dumps(Transactions)
     if request.method == 'POST':
-        pass
+        args = request.form
+        trxn_exists = Transactions.query.filter_by(name=args.get('name')).all()
+        if trxn_exists:
+            assert len(trxn_exists) ==  1, logging.warn("Too many trxn records found in db")
+            oldTransaction = trxn_exists[0]
+            for k,v in args.iteritems():
+                if k in utils.get_user_attributes(Transactions):
+                    oldTransaction[k] = v
+            db.session.add(oldTransaction)
+            db.session.commit()
+            # update
+        else:
+            # create request
+            newTransaction = Transaction(args.get('name'), args.get('cost'), args.get('status','new'))
+            db.session.add(newTransaction)
+            db.session.commit()
+            return json.dumps({'id':newTransaction.id})
 
     if request.method == 'DELETE':
         if not trxn_id:
@@ -127,8 +159,8 @@ def Transactions():
             db.session.commit()
             return json.dumps({'status':'success'})
 
-@app.route('/transaction', methods=['GET','POST','DELETE'])
-@app.route('/transaction/<trxn_id>', methods=['GET','DELETE'])
+@app.route('/donor', methods=['GET','POST','DELETE'])
+@app.route('/donor/<donor_id>', methods=['GET','DELETE'])
 def Donors():
     if request.method == 'GET':
         if not trxn_id:
@@ -138,7 +170,22 @@ def Donors():
             Donors = Donor.query.filter_by(id=trxn_id)
             return json.dumps(Donors)
     if request.method == 'POST':
-        pass
+        args = request.form
+        donor_exists = Donor.query.filter_by(name=args.get('name')).all()
+        if donor_exists:
+            assert len(donor_exists) ==  1, logging.warn("Too many donor records found in db")
+            oldDonor = donor_exists[0]
+            for k,v in args.iteritems():
+                if k in utils.get_user_attributes(Donor):
+                    oldDonor[k] = v
+            db.session.add(oldDonor)
+            db.session.commit()
+        else:
+            # create request
+            newDonor = Donor(args.get('name'), args.get('cost'), args.get('status','new'))
+            db.session.add(newDonor)
+            db.session.commit()
+            # update
     if request.method == 'DELETE':
         if not donor_id:
             logging.warn("Found multiple chiled records for one name ")
@@ -158,8 +205,6 @@ class HelloWorld(restful.Resource):
 class ImageApi(restful.Resource):
     def get(self, filename):
         return '%s/%s' % (base_path, filename)
-
-
 
 admin = Admin(app)
 admin.add_view(ModelView(Child,db.session))
