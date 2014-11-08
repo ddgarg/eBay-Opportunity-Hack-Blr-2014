@@ -200,13 +200,6 @@ def Donors():
             db.session.commit()
             return json.dumps({'status':'success'})
 
-class HelloWorld(restful.Resource):
-    def get(self):
-        return {"hello": "world"}
-
-class ImageApi(restful.Resource):
-    def get(self, filename):
-        return '%s/%s' % (base_path, filename)
 
 admin = Admin(app)
 
