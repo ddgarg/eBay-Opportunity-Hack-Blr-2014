@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, url_for
 from flask.ext.restful import reqparse
 from flask.ext import restful
 from flask.ext.admin import Admin, form
@@ -223,23 +223,20 @@ class UserView(ModelView):
     def _list_thumbnail(view, context, model, name):
         if not model.pic_paths:
             return ''
-
-        return Markup('<img src="%s">' % url_for('static/images',
-                                                 filename=form.thumbgen_filename(model.pic_paths)))
-
-    form_overrides = {
-        'pic_paths': form.FileUploadField
-    }
-
+            
+        return Markup('<img src="%s">' % url_for('static',
+                                                     filename="images/"+form.thumbgen_filename(model.pic_paths)))
+            
     column_formatters = {
-        'pic_path': _list_thumbnail
+        'pic_paths': _list_thumbnail
     }
-    # Pass additional parameters to 'path' to FileUploadField constructor
-    form_args = {
-        'pic_paths': {
-            'label': 'File',
-            'base_path': base_path + "/images"
-        }
+
+    # Alternative way to contribute field is to override it completely.
+    # In this case, Flask-Admin won't attempt to merge various parameters for the field.
+    form_extra_fields = {
+        'pic_paths': form.ImageUploadField('Image',
+                                      base_path=base_path+"/images",
+                                      thumbnail_size=(100, 100, True))
     }
       
 admin.add_view(UserView(Child,db.session))
