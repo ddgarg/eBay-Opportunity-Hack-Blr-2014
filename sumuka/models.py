@@ -76,7 +76,6 @@ class Donor(db.Model):
             if each in get_user_attributes():
                 vars(self).update({each:kwargs.get(each)})
 
-
 class Surgery(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     cost = db.Column(db.Float, nullable=False)
@@ -96,8 +95,6 @@ class Receipt(db.Model):
     donor = db.relationship('Donor',
                         backref=db.backref('donor',lazy='joined'), lazy='dynamic')
 
-#class Subscription(db.Model):
-#    pass
 
 def get_child_funds(child_id):
     """
@@ -117,30 +114,8 @@ def get_child_funds(child_id):
 #
 
 # Simple page to show images
-@app.route('/')
-def index():
-    locations = db.session.query(Child).all()
-    return render_template('locations.html', locations=locations)
 
-@app.route('/child')
-def children():
-    children = db.session.query(Child).all()
+#@app.route('/child')
+#def children():
+#    children = db.session.query(Child).all()
 
-if __name__ == '__main__':
-    # Create upload directory
-    try:
-        os.mkdir(base_path)
-    except OSError:
-        pass
-
-    # Create admin
-    admin = admin.Admin(app, name='Example: Inline Models')
-
-    # Add views
-    admin.add_view(ChildAdmin())
-
-    # Create DB
-    db.create_all()
-
-    # Start app
-    app.run(debug=True)
