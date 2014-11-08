@@ -1,11 +1,15 @@
 from flask import Flask
 from flask.ext.restful import reqparse
 from flask.ext import restful
-from flask.ext.admin import Admin
+from flask.ext.admin import Admin, form
 from flask.ext.admin.contrib.sqla import ModelView
 import json
 from models import *
 import logging
+from flask.ext.admin.contrib import fileadmin
+from flask_wtf import Form
+from wtforms import StringField
+from jinja2 import Markup
 
 app  = Flask(__name__)
 
@@ -48,7 +52,7 @@ def child(child_id=None):
                 # upload files
                 bytestring = request.files.get('imgFile')[0].body
                 img = Image.fromstring(bytestring)
-                file_path = base_path+datetime.datetime.utctimenow().strftime("%d-%B-%Y-%H:%M")
+                file_path = base_path+"images/" + datetime.datetime.utctimenow().strftime("%d-%B-%Y-%H:%M")
                 img.save(file_path)
                 pic_paths = json.loads(oldChild.pic_paths)
                 oldChild.pic_paths = pic_paths.append(file_path)
@@ -207,11 +211,40 @@ class ImageApi(restful.Resource):
         return '%s/%s' % (base_path, filename)
 
 admin = Admin(app)
-admin.add_view(ModelView(Child,db.session))
+
 admin.add_view(ModelView(Donor,db.session))
 #admin.add_view(ModelView(Transactions,db.session))
 admin.add_view(ModelView(Surgery,db.session))
 
+admin.add_view(fileadmin.FileAdmin(base_path+ "/images", name="images"))
+
+    
+class UserView(ModelView):
+    def _list_thumbnail(view, context, model, name):
+        if not model.pic_paths:
+            return ''
+
+        return Markup('<img src="%s">' % url_for('static/images',
+                                                 filename=form.thumbgen_filename(model.pic_paths)))
+
+    form_overrides = {
+        'pic_paths': form.FileUploadField
+    }
+
+    column_formatters = {
+        'pic_path': _list_thumbnail
+    }
+    # Pass additional parameters to 'path' to FileUploadField constructor
+    form_args = {
+        'pic_paths': {
+            'label': 'File',
+            'base_path': base_path + "/images"
+        }
+    }
+      
+admin.add_view(UserView(Child,db.session))
+        
+        
 if __name__ == '__main__':
 
     app.config.update(
