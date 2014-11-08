@@ -25,6 +25,7 @@ DB_USERNAME = 'scott@localhost'
 DB_PWD = 'tiger'
 # Create in-memory database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://%s:%s@localhost/sumukha'%(DB_USERNAME, DB_PWD)
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%s:%s@localhost/sumukha'%(DB_USERNAME, DB_PWD)
 app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
 
@@ -58,15 +59,23 @@ class Child(db.Model):
 class Donor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Unicode(64))
-    paid_amnt = db.Column(db.Float)
-#    payment_type = db.Column('type', db.Enum(payment_type_enums))
-    email_id = db.Column(db.String(64))
+    paid_amnt = db.Column(db.Float, nullable=False)
+    payment_type = db.Column(db.String(15),nullable=False)
+    email_id = db.Column(db.String(64),nullable=False)
 
-    def __init__(self, name, donated_amnt, **kwargs):
-        pass
+    def __init__(self, name, donated_amnt,email, p_type='onetime', **kwargs):
+        assert p_type in payment_type_enums, "Wrong payment type sent"
+        self.name  = name
+        self.paid_amnt = donated_amnt
+        self.payment_type = p_type
+        self.email_id = email
 
-#class Receipt(db.Model):
-#    pass
+class Receipt(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    paid = db.Column(db.Float, nullable=False) # Tobe auto populated
+    donor = db.relationship('Donor',
+                        backref=db.backref('donor',lazy='joined'), lazy='dynamic')
+
 #class Subscription(db.Model):
 #    pass
 
