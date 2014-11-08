@@ -1,4 +1,14 @@
 from models import *
+
+@app.route("/")
+def index():
+	return render_template("index.html")
+
+@app.route("/donation")
+def donation():
+    return render_template("donation.html")
+
+
 if __name__ == '__main__':
     # Create upload directory
     try:
