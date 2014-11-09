@@ -1,0 +1,20 @@
+*.class
+# Package Files #
+*.jar
+*.war
+*.ear
+# Project generated files #
+######################
+.project
+.classpath
+.checkstyle
+*/.project
+*/.classpath
+*/.checkstyle
+
+*.log
+.settings/
+target/
+test-output/
+
+*.DS_Store
