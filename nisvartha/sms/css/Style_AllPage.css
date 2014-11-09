@@ -1,0 +1,310 @@
+
+@charset "utf-8";
+#LeadstoryImage_transition_wrapper {
+    background-color: #0cf;
+    height: 355px;
+    margin: -109px 0 0;
+    width: 984px;
+}
+#LeadstoryImage_transition_wrapper div {
+    position: absolute;
+    z-index: 0;
+}
+#LeadstoryImage_transition_wrapper div.previous {
+    z-index: 1;
+}
+#LeadstoryImage_transition_wrapper div.current {
+    z-index: 2;
+}
+#ImageSlider {
+    background-color: #0cf;
+    height: 355px;
+    margin: -109px 0 0;
+    position: relative;
+    width: 984px;
+    z-index: 1;
+}
+#pageHeader {
+    background-image: url("../images/page_header_background.png");
+    background-repeat: no-repeat;
+    height: 129px;
+    margin: -117px 0 0;
+    position: relative;
+    z-index: 2;
+}
+#pageHeader h1 {
+    color: #79b7ff;
+    font-size: 30px;
+    font-weight: normal;
+    margin: 0;
+    padding: 100px 0 0 305px;
+}
+#content_Container {
+    background-color: #fff;
+    background-image: url("../images/Page_background.png");
+    background-position: left top;
+    background-repeat: repeat-x;
+    float: left;
+    margin: 0;
+    padding: 20px 20px 0;
+    width: 944px;
+}
+h2 {
+    color: #222222;
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0 0 18px;
+}
+h2.white {
+    color: #fff;
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0 0 18px;
+}
+h3 {
+    color: #555555;
+    font-size: 17px;
+    font-weight: normal;
+    margin: 0 0 10px;
+    padding: 0;
+}
+h3.white {
+    color: #cde2e2;
+    font-size: 17px;
+    font-weight: normal;
+    margin: 0 0 10px;
+    padding: 0;
+}
+p {
+    color: #222222;
+    font-size: 13px;
+    line-height: 19px;
+    margin: 0 0 13px;
+    padding: 0;
+}
+p a {
+    background-image: url("../images/arrow.gif");
+    background-position: left 2px;
+    background-repeat: no-repeat;
+    color: #f60;
+    font-size: 13px;
+    padding-left: 15px;
+    text-decoration: none;
+}
+p a:hover {
+    text-decoration: underline;
+}
+p.white {
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 19px;
+    margin: 0 0 13px;
+    padding: 0;
+}
+.divider {
+    border-bottom: 1px dotted #999;
+    clear: both;
+    margin: 0 0 18px;
+}
+.divider_white {
+    border-bottom: 1px dotted #fff;
+    clear: both;
+    margin: 0 0 18px;
+}
+ul.unorderList {
+    color: #333333;
+    font-size: 11px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ul.unorderList li {
+    background-image: url("../images/icon_bullet.png");
+    background-position: left top;
+    background-repeat: no-repeat;
+    font-size: 13px;
+    padding: 0 0 13px 20px;
+}
+ul.unorderList1 {
+    color: #333333;
+    font-size: 11px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ul.unorderList1 > li {
+    background-image: url("../images/icon_bullet1.png");
+    background-position: left top;
+    background-repeat: no-repeat;
+    font-size: 13px;
+    padding: 0 0 13px 20px;
+}
+ul.unorderList1 > li > a {
+    color: #fff;
+    text-decoration: none;
+}
+ul.unorderList1 > li > a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+.donerPhoto {
+    float: left;
+    margin: 0;
+    padding: 0 10px 0 0;
+}
+.panel1, .panel2, .panel3, .panel4, .panel5, .panel6 {
+    display: none;
+    margin: 0;
+    padding: 0 0 20px;
+}
+a#readMore1, a#readMore2, a#readMore3, a#readMore4, a#readMore5 {
+    background-image: url("../images/read_more.png");
+    background-position: left top;
+    background-repeat: no-repeat;
+    color: #0066cc;
+    cursor: pointer;
+    display: block;
+    font-size: 11px;
+    padding: 0 0 13px 15px;
+    text-decoration: none;
+}
+a.readless {
+    background-image: url("../images/read_less.png");
+    background-position: left top;
+    background-repeat: no-repeat;
+    color: #0066cc;
+    cursor: pointer;
+    display: block;
+    font-size: 11px;
+    padding: 0 0 18px 15px;
+    text-decoration: none;
+    width: 200px;
+}
+.navigation {
+    border: 0 none;
+    display: inline-block;
+    font-size: 0;
+    letter-spacing: 0;
+    margin: -6px 0 0;
+    padding: 0;
+    vertical-align: top;
+}
+.navigation ul {
+    text-transform: uppercase;
+}
+.navigation ul, .navigation li {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.navigation ul {
+    position: relative;
+    z-index: 25;
+}
+.navigation ul li {
+    float: left;
+    min-height: 1px;
+    vertical-align: middle;
+}
+.navigation ul li.hover, .navigation ul li:hover {
+    cursor: default;
+    position: relative;
+    z-index: 599;
+}
+.navigation ul ul {
+    bottom: 0;
+    left: 0;
+    margin-top: 0;
+    position: absolute;
+    text-transform: none;
+    top: 100%;
+    visibility: hidden;
+    width: 175px;
+    z-index: 598;
+}
+.navigation ul ul ul {
+    left: auto;
+    right: -99.5%;
+    top: 0;
+}
+.navigation ul li:hover > ul {
+    visibility: visible;
+}
+.navigation ul ul li {
+    float: none;
+    font-weight: normal;
+    width: 100%;
+}
+.navigation a {
+    color: #d9ff70;
+    cursor: pointer;
+    display: block;
+    font-size: 13px;
+    line-height: 1em;
+    padding: 0 8px;
+    text-decoration: none;
+}
+.navigation a.current {
+    background: none repeat scroll 0 0 #194a1b;
+    color: #fff;
+}
+.navigation ul ul a {
+    background: none repeat scroll 0 0 #1d4572;
+    color: #ffffff;
+    line-height: 30px;
+    padding: 0 10px;
+}
+.navigation ul ul ul {
+    border-top: 0 none;
+}
+.navigation ul ul li {
+    position: relative;
+}
+.navigation > ul > li > a {
+    line-height: 25px;
+    padding-bottom: 2px;
+}
+.navigation ul ul li:hover > a {
+    background: none repeat scroll 0 0 #0a7bca;
+}
+.navigation ul ul li.has-sub > a:after {
+    content: "+";
+    left: 5px;
+    margin-top: -12px;
+    position: absolute;
+    top: 40%;
+}
+.navigation ul li:hover > a, .navigation ul li#active > a {
+    background: none repeat scroll 0 0 #1d4572;
+    color: #ffffff;
+}
+.navigation ul li.has-sub > a:after {
+    content: "+";
+    margin-left: 5px;
+}
+.navigation ul li.last ul {
+    left: auto;
+    right: 0;
+}
+.navigation ul li.last ul ul {
+    left: auto;
+    right: 99.5%;
+}
+.navigation.right ul li {
+    float: right;
+}
+.navigation.right ul ul {
+    left: auto;
+    right: 0;
+}
+.navigation.right ul ul ul {
+    left: -99.5%;
+    right: auto;
+    top: 0;
+}
+a {
+    color: #fff;
+}
+a:hover {
+    color: #000;
+}
