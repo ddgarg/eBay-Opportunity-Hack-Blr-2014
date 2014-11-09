@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!--
+  - Mapping file for the Hibernate implementation of the RangDe interface.
+-->
+<hibernate-mapping auto-import="true" default-lazy="false">
+
+    <typedef class="com.rangde.hibernate.StringEnumUserType" name="AccountState">
+        <param name="enumClassname">com.rangde.domain.types.AccountState</param>
+    </typedef>
+
+
+    <typedef class="com.rangde.hibernate.StringEnumUserType" name="NRIStatus">
+        <param name="enumClassname">com.rangde.domain.types.NRIStatus</param>
+    </typedef>
+    
+    <typedef class="com.rangde.hibernate.StringEnumUserType" name="MemberType">
+        <param name="enumClassname">org.rangde.domain.MemberType</param>
+    </typedef>
+    <typedef class="com.rangde.hibernate.StringEnumUserType" name="VisibilityType">
+        <param name="enumClassname">org.rangde.domain.VisibilityType</param>
+    </typedef>
+
+   <typedef class="com.rangde.hibernate.StringEnumUserType" name="InvestorType">
+        <param name="enumClassname">org.rangde.domain.investor.InvestorType</param>
+    </typedef>
+    
+    <typedef name="investorSubType" class="com.rangde.hibernate.StringEnumUserType">
+    	<param name="enumClassname">org.rangde.domain.investor.InvestorSubType</param>
+    </typedef>
+    
+    <typedef name="workNature" class="com.rangde.hibernate.StringEnumUserType">
+    	<param name="enumClassname">org.rangde.borrower.entity.WorkNature</param>
+    </typedef>
+    <typedef name="investorClassifier" class="com.rangde.hibernate.StringEnumUserType">
+    	<param name="enumClassname">org.rangde.domain.types.InvestorClassifier</param>
+    </typedef>
+    <typedef class="com.rangde.hibernate.StringEnumUserType" name="InvIdentity">
+		<param name="enumClassname">org.rangde.domain.types.InvestorIdentity</param>
+    </typedef>
+    
+    <typedef class="org.springframework.orm.hibernate3.support.BlobByteArrayType" name="blobByte"/>
+    <class name="com.rangde.domain.User" table="users">
+    	<cache usage="read-write"/>
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <discriminator column="user_type" type="string" /> 
+        <version name="version" column="version"/>
+        <property name="firstName" column="first_name"/>
+        <property name="lastName" column="last_name"/>
+        <property name="emailAddress" column="email_address"/>
+        <property name="password" column="password"/>
+        <property name="registrationCode" column="registration_code"/>
+        <property name="age" column="age"/>
+        <property name="gender" column="gender"/>
+        <property name="address1" column="address1"/>
+        <property name="address2" column="address2"/>
+        <property name="address3" column="address3"/>
+        <property name="promocode" column="promocode"/>
+        <property name="reference" column="reference"/>
+        <property name="city" column="city"/>
+        <property name="stateOrProvince" column="state_or_province"/>
+        <property name="country" column="country"/>
+        <property name="pin" column="pin"/>
+        <property name="phoneBusiness" column="phone_business"/>
+        <property name="phoneResidence" column="phone_residence"/>
+        <property name="phoneMobile" column="phone_mobile"/>
+        <property name="registrationDate" column="registration_date"/>
+        <!--suppress HibernateMappingDomInspection -->
+        <property name="accountState" column="account_state" type="AccountState"/>
+        <property name="openId" column="open_id"/>
+        <property name="randomCookie" column="random_cookie"/>
+        <property name="lastLoginTimestamp" column="last_login_timestamp"/>
+        <property name="dateOfBirth" column="date_of_birth"/> 
+        <property name="referenceDetail" column="reference_detail"/>
+        <property name="nationalityId" column="nationality_id" />
+    </class>
+    
+    <class name="com.rangde.domain.PartnerHospitals" table="rdl_partner_hospitals">
+    <cache usage="read-write"/>
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name"/>
+		 <property name="location" column="location"/>
+	</class>
+	<class name="com.rangde.domain.PatientPersonalProfile" table="rdl_patient_personal_profile">
+    	<cache usage="read-write"/>
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name"/>
+        <property name="photo_ids" column="photo_ids"/>
+        <property name="date_of_birth" column="date_of_birth"/>
+        <property name="gender" column="gender"/>
+        <property name="home_location" column="home_location"/>
+		<property name="mother_tongue" column="mother_tongue"/>
+		<property name="current_location" column="current_location"/>
+		<property name="type_of_surgery" column="type_of_surgery"/>
+		<property name="annual_family_income" column="annual_family_income"/>
+		<property name="patient_profile_story" column="patient_profile_story"/>
+		<property name="last_updated" column="last_updated"/>
+	</class>
+		<class name="com.rangde.domain.Investors" table="investors">
+    	<cache usage="read-write"/>
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="image_id" column="image_id"/>
+        <property name="organization" column="organization"/>
+        <property name="occupation" column="occupation"/>
+        <property name="nick_name" column="nick_name"/>
+        <property name="has_invested" column="has_invested" />
+    </class>
+    
+	  <class name="com.rangde.domain.Payments" table="rdl_payments">
+			<cache usage="read-write"/>
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+            <property name="case_id" column="case_id"/>
+			<many-to-one name="investor" class="org.rangde.domain.Investor"  column="investor_id"/>
+            <property name="donation_amount" column="donation_amount"/>
+            <property name="payment_mode" column="payment_mode"/>
+            <property name="transaction_id" column="transaction_id"/>
+			<property name="bank_id" column="bank_id"/>
+			<property name="response_code" column="response_code"/>
+			<property name="payment_status" column="payment_status"/>
+			<property name="transaction_date" column="transaction_date"/>
+			<property name="last_updated" column="last_updated"/>
+			<property name="is_transaction_anonymous" column="is_transaction_anonymous"/>
+			<property name="is_80G_sent" column="is_80G_sent"/>
+			
+    </class>
+	<class name="com.rangde.domain.DoctorProfile" table="rdl_doctor_profile">
+    	<cache usage="read-write"/>
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name"/>
+        <property name="qualification" column="qualification"/>
+        <property name="associated_hospital" column="associated_hospital"/>
+        <property name="years_of_exp" column="years_of_exp"/>
+        <property name="photo_id" column="photo_id"/>
+    </class>
+    <class name="com.rangde.domain.PatientCaseProfile" table="rdl_patient_profiles">
+       <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+            <many-to-one name="patient" class="org.rangde.domain.PatientPersonalProfile"  column="patient_id"/>
+            <property name="partner_hospital_id" column="partner_hospital_id"/>
+            <property name="doctor_id" column="doctor_id"/>
+            <property name="case_study_video_link" column="case_study_video_link"/>
+            <property name="case_files_location" column="case_files_location"/>
+			<property name="threat_to_life" column="threat_to_life"/>
+			<property name="risk_to_livelihood" column="risk_to_livelihood"/>
+			<property name="case_referred_on" column="case_referred_on"/>
+			<property name="estimated_fund_raising_date" column="estimated_fund_raising_date"/>
+			<property name="estimated_admission_date" column="estimated_admission_date"/>
+			<property name="estimated_surgery_date" column="estimated_surgery_date"/>
+			<property name="estimated_discharge_date" column="estimated_discharge_date"/>
+			<property name="profile_submission_date" column="profile_submission_date"/>
+			<property name="volunteer_id" column="volunteer_id"/>
+			<property name="total_amount_needed" column="total_amount_needed"/>
+			<property name="total_amount_raised" column="total_amount_raised"/>
+			<property name="total_pledged_amount" column="total_pledged_amount"/>
+    </class>
+	  <class name="com.rangde.domain.PatientCaseProfile" table="rdl_patient_profiles">
+             <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+            <many-to-one name="patient" class="org.rangde.domain.PatientPersonalProfile"  column="patient_id"/>
+            <property name="partner_hospital_id" column="partner_hospital_id"/>
+            <property name="doctor_id" column="doctor_id"/>
+            <property name="case_study_video_link" column="case_study_video_link"/>
+            <property name="case_files_location" column="case_files_location"/>
+			<property name="threat_to_life" column="threat_to_life"/>
+			<property name="risk_to_livelihood" column="risk_to_livelihood"/>
+			<property name="case_referred_on" column="case_referred_on"/>
+			<property name="estimated_fund_raising_date" column="estimated_fund_raising_date"/>
+			<property name="estimated_admission_date" column="estimated_admission_date"/>
+			<property name="estimated_surgery_date" column="estimated_surgery_date"/>
+			<property name="estimated_discharge_date" column="estimated_discharge_date"/>
+			<property name="profile_submission_date" column="profile_submission_date"/>
+			<property name="volunteer_id" column="volunteer_id"/>
+			<property name="total_amount_needed" column="total_amount_needed"/>
+			<property name="total_amount_raised" column="total_amount_raised"/>
+			<property name="total_pledged_amount" column="total_pledged_amount"/>
+    </class>
+	
+	
+	
+	
+    
+    
+   
+	  
+ 
+    </hibernate-mapping>

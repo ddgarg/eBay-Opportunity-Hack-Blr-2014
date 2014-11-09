@@ -1,0 +1,26 @@
+<div class="grid4">
+    <ul class="section highlightBoxWhite">
+        <li class="imagesec">
+            <img src="{{imageSrc}}" alt="" class="patientImg">
+        </li>
+        <li class="section">
+        <ul class="section">
+        <li>
+            <h2 class="fundRaised">Rs.{{amountRaised}}</h2> 
+        </li>
+        <li>
+            <p class="progressBar">
+                <span class="raisedBar" style="width:{{percentageRaised}}"></span> 
+            </p>
+        </li>
+        <li>
+            <p class="patientName">{{patientName}}</p>
+        </li>
+        <li>
+            <p class="location">{{location}}</p>
+            <p class="timeLeft">{{timeLeft}}</p>
+        </li>
+        </ul>
+        </li>
+    </ul>
+</div>

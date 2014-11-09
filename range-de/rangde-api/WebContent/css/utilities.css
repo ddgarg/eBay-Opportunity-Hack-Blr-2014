@@ -1,0 +1,267 @@
+.greyBackground {
+background: #eee;
+}
+.highlightBoxWhite {
+background: #fff;
+color: #333;
+box-sizing: border-box;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+-ms-box-sizing: border-box;
+-o-box-sizing: border-box;
+border: 1px solid #bdc6cf;
+border-radius: 3px;
+padding: 10px;
+box-shadow: 0 0 8px rgba(189,198,207,0.6);
+-moz-box-shadow: 0 0 8px rgba(189,198,207,0.6);
+-webkit-box-shadow: 0 0 8px rgba(189,198,207,0.6);
+-ms-box-shadow: 0 0 8px rgba(189,198,207,0.6);
+-o-box-shadow: 0 0 8px rgba(189,198,207,0.6);
+}
+select {
+font-size: 15px;
+border: 2px solid #dedede;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+-moz-box-sizing: border-box;
+-ms-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+resize: none;
+border-image: initial;
+-webkit-font-smoothing: antialiased;
+font-size: 100%;
+vertical-align: baseline;
+}
+input[type=text],textarea {
+color: #333;
+border: 2px solid #e8eaec;
+background: #fafafb;
+min-height: 30px;
+font-size: 12pt;
+-webkit-border-top-right-radius: 3px;
+-webkit-border-bottom-right-radius: 3px;
+-moz-border-radius-topright: 3px;
+-moz-border-radius-bottomright: 3px;
+border-top-right-radius: 3px;
+border-bottom-right-radius: 3px;
+letter-spacing: .06em;
+font-weight: 600;
+}
+.submitBtn,.loginBtn{
+	padding: 9px 20px;
+font-size: 13pt;
+letter-spacing: .08em;
+min-width: 200px;
+background:#34cc04;
+color:#fff;
+border:0px;
+outline:none;
+}
+.signUpBtn{padding: 9px 20px;
+font-size: 13pt;
+letter-spacing: .08em;
+min-width: 200px;
+background:#048ccc;
+color:#fff;
+border:0px;
+outline:none;}
+
+.helpText{font-style: italic;font-size: 9pt;font-weight: normal;}
+.labelTxt{font-weight: bold;
+font-size: 11pt;
+margin: 0px 0px 8px 0px;
+}
+/*** Dot BreadCrumb **/
+.dotBreadcrumb{
+border: 2px solid #E8EAEC;
+border-radius: 27px;
+-moz-border-radius: 27px;
+-webkit-border-radius: 27px;
+background: #FAFAFB;
+position: relative;
+height: 13px;
+margin-bottom:40px;
+position:relative;
+}
+.dotBreadcrumb .circleDot{
+border-radius: 25px;
+box-shadow: 0 0px 0px rgba(26, 53, 71, 0.21), 0 0 0 3px rgba(26, 53, 71, 0.17);
+-webkit-box-shadow: 0 0px 0px rgba(26, 53, 71, 0.21), 0 0 0 3px rgba(26, 53, 71, 0.17);
+-moz-box-shadow: 0 0px 0px rgba(26, 53, 71, 0.21), 0 0 0 3px rgba(26, 53, 71, 0.17);
+background: #eee;
+position: relative;
+z-index: 3;
+width: 20px;
+height: 20px;
+text-align: center;
+display: block;
+margin: -5px auto 0px auto;
+cursor:pointer;
+}
+.dotBreadcrumb label{margin-top:10px;font-weight: 300;}
+.dotBreadcrumb .selection{position:relative;margin-left:0px;}
+.dotBreadcrumb .selection.prograssBarFull label{color:#52D468;}
+.dotBreadcrumb .selection.prograssBarFull .dot.circleDot{background: #52D468;box-shadow: none;color:#fff;}
+.dotBreadcrumb .selection.prograssBarFull .prograssBar{width: 100%;}
+.dotBreadcrumb .selection.prograssBarOff .prograssBar{width: 100%;}
+.dotBreadcrumb .selection.prograssBarOff label{color:#048ccc;}
+.dotBreadcrumb .selection.prograssBarOff .dot.circleDot{background: #048ccc;box-shadow: none;color:#fff;}
+.dotBreadcrumb .selection.prograssBarFull .dot.circleDot .fa.fa-check{font-size: 10pt;margin: 0px 0px 0px 0px;display: block;line-height: 22px;}
+.dotBreadcrumb .prograssBar{display: block;background: #eee;height: 9px;position: absolute;top: 0px;}
+.modernRadioButtonWrapper{position:relative;cursor:pointer;min-height: 35px;}
+.modernRadioButton{
+	box-shadow: 0 0px 0px rgba(26, 53, 71, 0.21), 0 0 0 3px rgba(26, 53, 71, 0.17);
+	-webkit-box-shadow: 0 0px 0px rgba(26, 53, 71, 0.21), 0 0 0 3px rgba(26, 53, 71, 0.17);
+	-moz-box-shadow: 0 0px 0px rgba(26, 53, 71, 0.21), 0 0 0 3px rgba(26, 53, 71, 0.17);
+background: #eee;
+position: relative;
+z-index: 3;
+width: 20px;
+height: 20px;
+text-align: center;
+display: block;
+float: left;
+-webkit-border-radius: 50px;
+-moz-border-radius: 50px;
+border-radius: 50px;
+cursor:pointer;
+}
+.modernRadioButtonLabel{z-index: 3;cursor:pointer;
+text-align: center;
+display: block;
+float: left;
+margin-left: 22px;min-height: 20px;}
+.modernRadioButtonTickIcon{position: absolute;
+display: none;
+transition: .4s;
+-webkit-transition: .4s;
+-moz-transition: .4s;
+top: 0px;
+z-index: 5;
+background: #52D468;
+width: 20px;
+height: 20px;
+color: #fff;
+text-align: center;-webkit-border-radius: 50px;
+-moz-border-radius: 50px;
+border-radius: 50px;}
+.modernRadioButtonWrapper.active .modernRadioButton{
+box-shadow: 0 0px 0px rgba(82, 212, 104, 1), 0 0 0 3px rgba(82, 212, 104, 1);
+-moz-box-shadow: 0 0px 0px rgba(82, 212, 104, 1), 0 0 0 3px rgba(82, 212, 104, 1);
+-webkit-box-shadow: 0 0px 0px rgba(82, 212, 104, 1), 0 0 0 3px rgba(82, 212, 104, 1);
+-ms-box-shadow: 0 0px 0px rgba(82, 212, 104, 1), 0 0 0 3px rgba(82, 212, 104, 1);
+-o-box-shadow: 0 0px 0px rgba(82, 212, 104, 1), 0 0 0 3px rgba(82, 212, 104, 1);}
+.modernRadioButtonWrapper.active .modernRadioButtonTickIcon{display:block;}
+.modernCheckBoxWrapper{position:relative;}
+.modernCheckBox{
+	box-shadow: 0 0px 0px rgba(26, 53, 71, 0.21), 0 0 0 3px rgba(26, 53, 71, 0.17);
+	-moz-box-shadow: 0 0px 0px rgba(26, 53, 71, 0.21), 0 0 0 3px rgba(26, 53, 71, 0.17);
+	-webkit-box-shadow: 0 0px 0px rgba(26, 53, 71, 0.21), 0 0 0 3px rgba(26, 53, 71, 0.17);
+background: #eee;
+position: relative;
+z-index: 3;
+width: 20px;
+height: 20px;
+text-align: center;
+display: block;
+float: left;
+}
+.modernCheckBoxLabel{z-index: 3;
+text-align: center;
+display: block;
+float: left;
+margin-left: 22px;
+min-height: 40px;
+font-size: 12pt;
+font-weight: 300;}
+
+.modernCheckBoxTickIcon{position: absolute;
+display: none;
+transition: .4s;
+top: -2px;
+z-index: 5;
+background: #52D468;
+width: 24px;
+height: 24px;
+color: #fff;
+text-align: center;
+left: -2px;}
+.modernCheckBoxWrapper.active .modernCheckBoxTickIcon{display:block;}
+.modernCheckBoxTickIcon .fa-check{line-height: 22px;}
+.pagination {
+  margin: 20px 0;
+}
+
+.pagination ul {
+  display: inline-block;
+  *display: inline;
+  margin-bottom: 0;
+  margin-left: 0;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  *zoom: 1;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.pagination ul > li {
+  display: inline;
+}
+
+.pagination ul > li > a,
+.pagination ul > li > span {
+  float: left;
+  padding: 4px 12px;
+  line-height: 20px;
+  text-decoration: none;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-left-width: 0;
+}
+
+.pagination ul > li > a:hover,
+.pagination ul > .active > a,
+.pagination ul > .active > span {
+  background-color: #f5f5f5;
+}
+
+.pagination ul > .active > a,
+.pagination ul > .active > span {
+  color: #999999;
+  cursor: default;
+}
+
+.pagination ul > .disabled > span,
+.pagination ul > .disabled > a,
+.pagination ul > .disabled > a:hover {
+  color: #999999;
+  cursor: default;
+  background-color: transparent;
+}
+
+.pagination ul > li:first-child > a,
+.pagination ul > li:first-child > span {
+  border-left-width: 1px;
+  -webkit-border-bottom-left-radius: 4px;
+          border-bottom-left-radius: 4px;
+  -webkit-border-top-left-radius: 4px;
+          border-top-left-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  -moz-border-radius-topleft: 4px;
+}
+
+.pagination ul > li:last-child > a,
+.pagination ul > li:last-child > span {
+  -webkit-border-top-right-radius: 4px;
+          border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+          border-bottom-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -moz-border-radius-bottomright: 4px;
+}
+
+.modernRadioButtonTickIcon .fa-check{line-height: 22px;}

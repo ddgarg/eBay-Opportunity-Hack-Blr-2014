@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" href="css/master.css"i />
+    <link rel="stylesheet" href="css/utilities.css" />
+    <link rel="stylesheet" href="css/font-awesome.css" />
+    <link rel="stylesheet" href="css/postUpdate.css" />
+        <title>Post Update</title>
+<script type="text/javascript" charset="utf-8">
+
+   var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready",onDeviceReady,false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        pictureSource = navigator.camera.PictureSourceType;
+        destinationType = navigator.camera.DestinationType;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoURISuccess(imageURI) {
+
+        // Show the selected image
+        var smallImage = document.getElementById('image');
+        smallImage.style.display = 'block';
+        smallImage.src = imageURI;
+    }
+
+
+    // A button will call this function
+    //
+    function getPhoto(source) {
+      // Retrieve image file location from specified source
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+        destinationType: destinationType.FILE_URI,
+        sourceType: source });
+    }
+
+   function uploadPhoto() {
+
+	conosole.log("test");
+	alert("Submitted");
+
+        //selected photo URI is in the src attribute (we set this on getPhoto)
+        var imageURI = document.getElementById("image");
+	var imageURIValue = imageURI.getAttribute("files");
+        if (!imageURI) {
+            alert('Please select an image first.');
+            return;
+        }
+
+        //set upload options
+        var options = new FileUploadOptions();
+        options.fileKey = "file";
+        options.fileName = imageURIValue.substr(imageURI.lastIndexOf('/')+1);
+        options.mimeType = "image/jpeg";
+
+        options.params = {
+	    comment: document.getElementById("comment").value
+	    name: document.getElementById("name").value
+        }
+
+	console.log(options.params.comment);
+
+        var ft = new FileTransfer();
+        ft.upload(imageURI, encodeURI("http://some.server.com/upload.php"), win, fail, options);
+    }
+
+    // Called if something bad happens.
+    
+    function onFail(message) {
+      console.log('Failed because: ' + message);
+    }
+
+    function win(r) {
+        console.log("Code = " + r.responseCode);
+        console.log("Response = " + r.response);
+        //alert("Response =" + r.response);
+        console.log("Sent = " + r.bytesSent);
+    }
+
+    function fail(error) {
+        alert("An error has occurred: Code = " + error.code);
+        console.log("upload error source " + error.source);
+        console.log("upload error target " + error.target);
+    }
+</script>
+
+    </head>
+    <body class="greyBackground">
+	<div class="gridWrapper">
+		<div class="pageW-600">
+		<div class="gridWrapper">
+                <ul class="postUpdateWrapper highlightBoxWhite pull-down-30">
+			<li>
+				<p class="labelTxt">Patient Name: </p>
+				<input id="name" type="text"/>
+			</li>
+			<li>
+				<p class="labelTxt">Select Image: </p>
+				<input id="image" type="file" accept="image/*" />
+			</li>
+			<li class="pull-down-20">
+				<p class="labelTxt">Select video <span class="helpText">(optional)</span>: </p>
+				<input id="video" type="file" accept="videos/*"/>
+			</li>
+			<li class="pull-down-20">
+				<p class="labelTxt">Post Text: </p>
+				<textarea id="comment" style="width:100%;height:100px;"></textarea>
+			</li>
+			<li class="pull-down-30 txt-center">
+			<button onclick="uploadPhoto();" class="submitBtn">Submit</button>
+			</li>
+                </ul>
+        </div>
+</div>
+</div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>

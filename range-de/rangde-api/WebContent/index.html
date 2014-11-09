@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Timeline Test</title>
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  </head>
+  <body>
+    Testing Index Page.
+    <script type="text/javascript">
+	  $(document).ready(function(){
+	    $.ajax({
+	       	url: "/rangde-api/rest/hello",
+	       	type: "GET",
+	       	contentType: "text/plain",
+	       	success: function (ajax_response) {
+	       		console.log("Success!");
+	       	},
+	       	error: function() {
+	            console.log("Failed!");
+	        }
+	    });   
+	  });
+    </script>
+  </body>
+</html>

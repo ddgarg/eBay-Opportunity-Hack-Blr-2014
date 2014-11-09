@@ -1,0 +1,65 @@
+h2.filtersHeading {
+    font-size: 13pt;
+    border-bottom: 1px solid #eee;
+    margin: 20px 0px 10px 0px;
+    padding: 0px 0px 3px 0px;
+    width: 80%;
+}
+h2.filtersHeading.first {
+    margin: 40px 0px 10px 0px;
+}
+img.patientImg {
+    width: 100%;
+}
+p.progressBar {
+    height: 15px;
+    background: #eee;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    position: relative;
+}
+p.progressBar .raisedBar {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: #50AD06;
+    width: 60%;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+}
+ul.filterTap {
+    margin: 0px 0px 30px 0px;
+    float: left;
+    width: 100%;
+    position: relative;
+}
+ul.filterTap > li {
+    display: block;
+    padding: 13px 23px;
+    width: 25%;
+    box-sizing: border-box;
+    float: left;
+    border: 1px solid #ddd;
+    border-left: 0px;
+}
+ul.filterTap > li.active {
+    background: #eee;
+    color: #ddd;
+    border-left: 1px solid #ddd;
+}
+input#autoSearch {
+    border: 2px solid #eee;
+    padding: 13px 23px;
+    width: 80%;
+    position: relative;
+    font-size: 12pt;
+}
+i.fa.fa-search {
+    position: absolute;
+    top: 11px;
+    right: 25%;
+    font-size: 17pt;
+}

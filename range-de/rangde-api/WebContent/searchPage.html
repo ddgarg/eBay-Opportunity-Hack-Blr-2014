@@ -1,0 +1,255 @@
+<html>
+
+<head>
+    <title>Search Page</title>
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/searchPage.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <style type="text/css">
+    	select{min-height: 30px;min-width:200px;
+padding: 8px;}
+h2.filtersHeading {
+font-size: 12pt;
+border-bottom: 1px solid #eee;
+margin: 20px 0px 10px 0px;
+padding: 0px 0px 3px 0px;
+width: 80%;
+font-weight: 600;
+color: #999;
+}
+.searchResultsDisplaySec > .grid4{margin-bottom:20px;}
+.searchResultsDisplaySec > .grid4:nth-child(3n+4){margin-left:0px;}
+h2.fundRaised {
+margin: 13px 0px 8px 0px;
+font-size: 15pt;
+text-align: left;
+}
+p.patientName {
+font-size: 10pt;
+color: #777;
+padding:10px 0px 0px 0px;
+}
+p.timeLeft {
+font-size: 8pt;
+color: #999;
+}
+.filterTap  .arrow{display:none;}
+ul.filterTap > li.active >.arrow{ display: block;
+position: absolute;
+bottom: -40px;
+left: 40%;
+font-size: 50pt;
+color: #eee;}
+.headerNavLinksSec > li{display:inline-block;float:right;padding:8px 13px;font-size:12pt;}
+.headerNavLinksSec > li.first{padding-right:0px;}
+.headerSecWrapper {
+background: #2d3e50;
+color: #fff;
+margin: 0px 0px 30px 0px;
+padding: 8px 13px;
+}
+.headerSecWrapper a{color:#fff;}
+    </style>
+</head>
+
+<body class="homePage">
+</body>
+
+<div class="gridWrapper headerSecWrapper">
+    <div class="pageWrapper">
+        <div class="gridWrapper">
+        	<div class="grid4">
+        		<img src="images/RangDeLife.png" alt="" height="80px"/>
+        	</div>
+        	<div class="grid8 pull-down-20">
+        		<ul class="section headerNavLinksSec">
+        			<li class="first"><a href="" class="signUpBtn">Sign Up</a></li>
+        			<li><a href="" class="loginBtn">Login</a></li>        			
+        			<li><a href="">Saved Life</a></li>
+        			<li><a href="">Volunteer</a></li>
+        			<li><a href="">Donate</a></li>
+        			
+        		</ul>
+        	</div>            
+        </div>
+	</div>
+</div>
+<div class="pageWrapper">
+        <div class="gridWrapper">
+            <div class="grid4">
+                <ul class="section pull-bottom-30">
+                    <li class="pos-rel">
+                        <input maxlength="50" id="autoSearch" type="text" class="">
+                        <i class="fa fa-search"></i>
+                    </li>
+                </ul>
+                <h2 class="filtersHeading">Categories</h2>
+                <ul class="section pull-bottom-30">
+                    <li class="section modernCheckBoxWrapper"  data-bind="#lifeThreating">
+						<span class="modernCheckBox"></span>
+						<span class="modernCheckBoxLabel">Life Threating</span>
+						<p class="modernCheckBoxTickIcon"><i class="fa fa-check"></i></p>
+						<input type="checkbox" name="categories" id="lifeThreating" class="hide" checked>
+                    </li>
+                    <li class="section modernCheckBoxWrapper"  data-bind="#livelihoodatRisk">
+						<span class="modernCheckBox"></span>
+						<span class="modernCheckBoxLabel">Livelihood at Risk</span>
+						<p class="modernCheckBoxTickIcon"><i class="fa fa-check"></i></p>
+                        <input type="checkbox" name="categories" id="livelihoodatRisk" class="hide">
+                    </li>
+                </ul>
+                <h2 class="filtersHeading">Volunteer</h2>
+                <ul class="section pull-bottom-30">
+                    <li class="section modernRadioButtonWrapper" data-bind="#allPatient" data-bind-group="volunteer">
+						<span class="modernRadioButton"></span>
+						<label class="modernRadioButtonLabel">All</label>
+						<p class="modernRadioButtonTickIcon"><i class="fa fa-check"></i></p>
+                        <input type="radio" name="volunteer" id="allPatient" class="hide" checked>
+                    </li>
+                    <li class="section modernRadioButtonWrapper" data-bind="#openPatient" data-bind-group="volunteer">
+						<span class="modernRadioButton"></span>
+						<label class="modernRadioButtonLabel">Open</label>
+						<p class="modernRadioButtonTickIcon"><i class="fa fa-check"></i></p>
+                        <input type="radio" name="volunteer" id="openPatient" class="hide">
+                    </li>
+                </ul>
+                <h2 class="filtersHeading">Location</h2>
+                <ul class="section pull-bottom-30">
+                    <li>
+                        <select name="location" id="">
+                            <option value="">Bangalore</option>
+                            <option value="">Delhi</option>
+                            <option value="">Chennai</option>
+                        </select>
+                    </li>
+                </ul>
+                <h2 class="filtersHeading">Language</h2>
+                <ul class="section pull-bottom-30">
+                    <li>
+                        <select name="language" id="">
+                            <option value="">Hindi</option>
+                            <option value="">Tamil</option>
+                            <option value="">Telugu</option>
+                        </select>
+                    </li>
+                </ul>
+                <h2 class="filtersHeading">Time Left</h2>
+                <ul class="section pull-bottom-30">
+                    <li class="section modernRadioButtonWrapper" data-bind="#timeLeft1" data-bind-group="timeLeft">
+						<span class="modernRadioButton"></span>
+						<label class="modernRadioButtonLabel">Less than 5 days</label>
+						<p class="modernRadioButtonTickIcon"><i class="fa fa-check"></i></p>
+                        <input type="radio" name="timeLeft" id="timeLeft1" class="hide" checked>
+                    </li>
+                    <li class="section modernRadioButtonWrapper" data-bind="#timeLeft2" data-bind-group="timeLeft">
+						<span class="modernRadioButton"></span>
+						<label class="modernRadioButtonLabel">5 days - 20 days</label>
+						<p class="modernRadioButtonTickIcon"><i class="fa fa-check"></i></p>
+                        <input type="radio" name="timeLeft" id="timeLeft2" class="hide">
+                    </li>
+                    <li class="section modernRadioButtonWrapper" data-bind="#timeLeft3" data-bind-group="timeLeft">
+						<span class="modernRadioButton"></span>
+						<label class="modernRadioButtonLabel">More than 20 days</label>
+						<p class="modernRadioButtonTickIcon"><i class="fa fa-check"></i></p>
+                        <input type="radio" name="timeLeft" id="timeLeft3" class="hide">
+                    </li>
+                </ul>
+                <h2 class="filtersHeading">Percent Funded</h2>
+                <ul class="section pull-bottom-30">
+                    <li class="section modernRadioButtonWrapper" data-bind="#percentFunded1" data-bind-group="percentFunded">
+						<span class="modernRadioButton"></span>
+						<label class="modernRadioButtonLabel">All</label>
+						<p class="modernRadioButtonTickIcon"><i class="fa fa-check"></i></p>
+                        <input type="radio" name="percentFunded" id="percentFunded1" class="hide" checked>
+                    </li>
+                    <li class="section modernRadioButtonWrapper" data-bind="#percentFunded2" data-bind-group="percentFunded">
+						<span class="modernRadioButton"></span>
+						<label class="modernRadioButtonLabel">25% - 50%</label>
+						<p class="modernRadioButtonTickIcon"><i class="fa fa-check"></i></p>
+                        <input type="radio" name="percentFunded" id="percentFunded2" class="hide">
+                    </li>
+                    <li class="section modernRadioButtonWrapper" data-bind="#percentFunded3" data-bind-group="percentFunded">
+						<span class="modernRadioButton"></span>
+						<label class="modernRadioButtonLabel">50% 100%</label>
+						<p class="modernRadioButtonTickIcon"><i class="fa fa-check"></i></p>
+                        <input type="radio" name="percentFunded" id="percentFunded3" class="hide">                        
+                    </li>
+                </ul>
+                <h2 class="filtersHeading">Funding Status</h2>
+                <ul class="section pull-bottom-30">
+                    <li class="section modernRadioButtonWrapper" data-bind="#fundingStatusAll" data-bind-group="fundingStatus">
+						<span class="modernRadioButton"></span>
+						<label class="modernRadioButtonLabel">All</label>
+						<p class="modernRadioButtonTickIcon"><i class="fa fa-check"></i></p>
+                        <input type="radio" name="fundingStatus" id="fundingStatusAll" class="hide" checked>
+                    </li>
+                    <li class="section modernRadioButtonWrapper" data-bind="#fundingStatusOpen" data-bind-group="fundingStatus">
+						<span class="modernRadioButton"></span>
+						<label class="modernRadioButtonLabel">Open</label>
+						<p class="modernRadioButtonTickIcon"><i class="fa fa-check"></i></p>
+                        <input type="radio" name="fundingStatus" id="fundingStatusOpen" class="hide">
+                    </li>
+                </ul>
+            </div>
+            <div class="grid8">
+                <div class="gridWrapper">
+                    <ul class="filterTap">
+                        <li class="active">
+                            Most Funded
+                            <span class="arrow"><i class="fa fa-caret-down"></i></span>
+                        </li>
+                        <li>
+                            Near Me
+                            <span class="arrow"><i class="fa fa-caret-down"></i></span>
+                        </li>
+                        <li>
+                            Live Feed
+                            <span class="arrow"><i class="fa fa-caret-down"></i></span>
+                        </li>
+                        <li>
+                            My Friends
+                            <span class="arrow"><i class="fa fa-caret-down"></i></span>
+                        </li>                        
+                    </ul>
+                </div>
+                <div class="gridWrapper searchResultsDisplaySec">
+
+                </div>
+                <hr style="border: 1px solid #eee;height: 0px;"/>
+                <div class="section">
+				<span class="textleft">
+					Displaying Patients 1 to 9
+				</span>
+				<div class="pagination pageNavigation">
+					<ul>
+						<li class="active"><a href="#tagged">Prev</a></li>
+								<li class="active"><a id="1" href="#" class="pageclick">1</a></li>
+								<li><a id="2" href="#" class="pageclick link">2</a></li>
+								<li><a id="3" href="#" class="pageclick link">3</a></li>
+								<li><a id="4" href="#" class="pageclick link">4</a></li>
+								<li><a id="5" href="#" class="pageclick link">5</a></li>
+								<li><a id="6" href="#" class="pageclick link">6</a></li>
+								<li><a id="7" href="#" class="pageclick link">7</a></li>
+								<li><a id="8" href="#" class="pageclick link">8</a></li>
+						<li><a href="#" class="nextclick">Next</a></li>
+					</ul>
+				</div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/lib/jquery.min.js"></script>
+<script src="js/utilities.js"></script>
+<script src="js/searchPage.js"></script>
+<script src="js/lib/mustache.js"></script>
+<script type="text/javascript">
+$(function(){
+searchPage.init();    
+});
+    
+</script>
+
+</html>
+

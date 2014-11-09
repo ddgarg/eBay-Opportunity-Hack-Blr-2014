@@ -1,0 +1,88 @@
+h2.filtersHeading {
+    font-size: 13pt;
+    border-bottom: 1px solid #eee;
+    margin: 20px 0px 10px 0px;
+    padding: 0px 0px 3px 0px;
+    width: 80%;
+}
+h2.filtersHeading.first {
+    margin: 40px 0px 10px 0px;
+}
+img.patientImg {
+    width: 100%;
+}
+p.progressBar {
+    height: 10px;
+    background: #eee;    
+    position: relative;
+}
+p.progressBar .raisedBar {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: #50AD06;
+    width: 60%;    
+}
+ul.filterTap {
+    margin: 0px 0px 30px 0px;
+    float: left;
+    width: 100%;
+    position: relative;
+}
+ul.filterTap > li {
+    display: block;
+    padding: 13px 23px;
+    width: 25%;
+    box-sizing: border-box;
+    float: left;
+    border: 1px solid #ddd;
+    border-left: 0px;
+    text-align:center;
+    background: #fff;
+}
+ul.filterTap > li.active {
+    background: #eee;
+    color: #777;
+    border-left: 1px solid #ddd;
+    position: relative;
+}
+input#autoSearch {
+    border: 2px solid #eee;
+    padding: 13px 23px;
+    width: 80%;
+    position: relative;
+    font-size: 12pt;
+}
+i.fa.fa-search {
+    position: absolute;
+    top: 11px;
+    right: 25%;
+    font-size: 17pt;
+}
+.specialSec{border-bottom: 1px solid #eee;
+padding: 0px 0px 8px 0px;}
+.donationUpdateSec{border-top: 2px solid #eee;padding: 20px 0px;}
+.donationUpdateSec .amountDonated{font-size: 18pt;
+font-weight: bold;
+color: #629C44;}
+.donationUpdateSec .donatedPersonName{font-size: 12pt;
+font-weight: 300;color: #777;margin: 0px 0px 8px 0px;}
+.donationUpdateSec .donatedTime{font-size: 9pt;
+color: #999;}
+.donationUpdateSec .donorComments{color: #777;
+font-size: 12pt;
+padding: 20px 0px 0px 0px;}
+.post_author_img{height:80px;}
+.post_author_name{ont-size: 18pt;
+font-weight: bold;
+color: #777;}
+.post_author_type{font-size: 12pt;
+font-weight: 300;color: #777;margin: 0px 0px 8px 0px;}
+.post_text{color: #777;
+font-size: 12pt;
+padding:0px 0px 0px 0px;margin:23px 0px 13px 0px;}
+.post_time{font-size: 9pt;
+color: #999;}
+.post_img{width:90%;}
+

@@ -1,0 +1,67 @@
+.greyBackground {
+background: #eee;
+}
+.highlightBoxWhite {
+background: #fff;
+color: #333;
+box-sizing: border-box;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+-ms-box-sizing: border-box;
+-o-box-sizing: border-box;
+border: 1px solid #bdc6cf;
+border-radius: 3px;
+padding: 10px;
+box-shadow: 0 0 8px rgba(189,198,207,0.6);
+-moz-box-shadow: 0 0 8px rgba(189,198,207,0.6);
+-webkit-box-shadow: 0 0 8px rgba(189,198,207,0.6);
+-ms-box-shadow: 0 0 8px rgba(189,198,207,0.6);
+-o-box-shadow: 0 0 8px rgba(189,198,207,0.6);
+}
+select {
+font-size: 15px;
+border: 1px solid #dedede;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+-moz-box-sizing: border-box;
+-ms-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+resize: none;
+border-image: initial;
+-webkit-font-smoothing: antialiased;
+font-size: 100%;
+vertical-align: baseline;
+}
+input[type=text],textarea {
+color: #333;
+border: 2px solid #e8eaec;
+background: #fafafb;
+min-height: 30px;
+font-size: 12pt;
+-webkit-border-top-right-radius: 3px;
+-webkit-border-bottom-right-radius: 3px;
+-moz-border-radius-topright: 3px;
+-moz-border-radius-bottomright: 3px;
+border-top-right-radius: 3px;
+border-bottom-right-radius: 3px;
+letter-spacing: .06em;
+font-weight: 600;
+}
+.submitBtn{
+	padding: 9px 20px;
+font-size: 13pt;
+letter-spacing: .08em;
+min-width: 200px;
+background:#34cc04;
+color:#fff;
+border:0px;
+outline:none;
+}
+
+.helpText{font-style: italic;font-size: 9pt;font-weight: normal;}
+.labelTxt{font-weight: bold;
+font-size: 11pt;
+margin: 0px 0px 8px 0px;
+}

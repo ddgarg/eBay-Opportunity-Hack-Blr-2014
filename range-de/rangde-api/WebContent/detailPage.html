@@ -1,0 +1,338 @@
+<html>
+
+<head>
+    <title>Search Page</title>
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/searchPage.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/utilities.css">
+     <link rel="stylesheet" href="css/fb.css">
+      <link rel="stylesheet" href="css/popbox.css">
+    <style type="text/css">
+        ul.filterTap > li {
+            display: block;
+            padding: 13px 14px;
+            width: 16.5%;
+            text-align: center;
+        }
+        .tabContentSectionWrapper {
+            display: none;
+        }
+        .tabContentSectionWrapper.active {
+            display: block
+        }
+        .dotBreadcrumb .selection {
+            position: relative;
+            margin-left: 0px;
+            width: 19.9569%;
+        }
+    </style>
+    <style type='text/css' media='screen'>
+    body {
+      text-align:center;
+      background:#f7f7f7;
+      font-family:georgia;
+      font-size:22px;
+      text-shadow:1px 1px 1px #FFF;
+      margin:200px;
+    }
+
+    a { color:#999; text-decoration:none; }
+    label { display: block; }
+    form { margin: 25px; text-align:left }
+    form input[type=text] { padding:5px; width:90%; border:solid 1px #CCC;}
+    form textarea { padding:5px; width:90%; border:solid 1px #CCC; height:100px;}
+
+    .box { width:350px; }
+
+     footer {
+       font-size:12px;
+     }
+     form a, footer a { color:#40738d; }
+  </style>
+  
+  
+</head>
+
+<body class="homePage">
+</body>
+<div class="gridWrapper">
+    <div class="pageWrapper">
+        <div class="gridWrapper">
+            <h2>Page intro text something will come here</h2>
+        </div>
+
+        <div class="gridWrapper">
+            <div class="grid8">
+                <ul>
+                    <li>
+                        <img src="http://www.rangde.org/images/landingPage/madness_pro_img7.jpg" alt="Mohan" class="mainImage" />
+                    </li>
+                    <li>
+                        <ul>
+                            <li>
+                                <img src="" alt="" />
+                            </li>
+                            <li>
+                                <img src="" alt="" />
+                            </li>
+                            <li>
+                                <img src="" alt="" />
+                            </li>
+                            <li>
+                                <img src="" alt="" />
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="filterTap" id="patient_details_tab">
+                    <li class="active" data-bind="#timeline">Timeline</li>
+                    <li data-bind="#about_patient">About</li>
+                    <li data-bind="#volunteers">Volunteers</li>
+                    <li data-bind="#angels">Angels</li>
+                    <li data-bind="#treatment_cost">Cost</li>
+                    <li data-bind="#patient_reports">Reports</li>
+                </ul>
+                <div class="section tabContentSectionWrapper active" id="timeline">
+                    <div class="dotBreadcrumb gridWrapper pull-down-20" style="width: 99%;">
+                        <p class="grid3 txt-center selection prograssBarFull">
+                            <a href="/invest"><span class="dot circleDot"><i class="fa fa-check"></i></span>
+	                            <label>Published</label></a>
+                            <span class="prograssBar"></span>
+                        </p>
+                        <p class="grid3 txt-center selection prograssBarFull">
+                            <a href="/review"><span class="dot circleDot"><i class="fa fa-check"></i></span>
+	                            <label>Fundraising</label></a>
+                            <span class="prograssBar"></span>
+                        </p>
+                        <p class="grid3 txt-center selection prograssBaroff">
+                            <a href="/checkout/loadSupportRangDe.action">
+                                <span class="dot circleDot"></span>
+                                <label>Admission</label>
+                            </a>
+                            <span class="prograssBar"></span>
+                        </p>
+                        <p class="grid3 txt-center selection prograssBarOff">
+                            <span class="dot circleDot"></span>
+                            <label>Surgery</label>
+                            <span class="prograssBar"></span>
+                        </p>
+                        <p class="grid3 txt-center selection prograssBarOff">
+                            <span class="dot circleDot"></span>
+                            <label>Discharge</label>
+                            <span class="prograssBar"></span>
+                        </p>
+                    </div>
+                    <div class="section highlightBoxWhite pull-down-20">
+                        <ul class="section">
+                            <li class="gridWrapper">
+                                <div class="grid3">
+                                    <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/c5.0.160.160/p160x160/1896951_603092643103341_1182711970_n.jpg?oh=55410354e7c714e12db1d910f4ad485c&oe=551D0CF5&__gda__=1424760519_ea70b850226b6037c50b8a0143bdaeae" alt="" class="post_author_img"/>
+                                </div>
+                                <div class="grid9">
+                                    <ul class="gridWrapper">
+                                        <li class="post_author_name">Chaitanya & Vaishali</li>
+                                        <li class="post_author_type">Social worker</li>
+                                        <li class="post_time"><i class="fa fa-clock-o"></i> 1 hour ago</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="section post_text">Dear Mohan, Wishing you a speedy recovery! Get Well Soon!</li>
+                            <li class="section">
+                                <img src="https://scontent-b-sin.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/10298908_631067396972532_2609342561937081109_n.jpg?oh=564a999a31003910234c1e759b50e5db&oe=54E04F28" alt=""  class="post_img"/>
+                            </li>
+                            
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="section tabContentSectionWrapper" id="about_patient">
+                    <h2 class="dummy">2</h2>
+                </div>
+                <div class="section tabContentSectionWrapper" id="volunteers">
+                    <h2 class="dummy">3</h2>
+                </div>
+                <div class="section tabContentSectionWrapper" id="angels">
+                    <h2 class="dummy">4</h2>
+                </div>
+                <div class="section tabContentSectionWrapper" id="treatment_cost">
+                    <h2 class="dummy">5</h2>
+                </div>
+                <div class="section tabContentSectionWrapper" id="patient_reports">
+                    <h2 class="dummy">6</h2>
+                </div>
+                <div class="section commentsSectionWrapper">
+                    <h3 class="commentsSectionHeader"> No Comments Yet </h3>
+                    <p>Please use Facebook to leave a comment below.</p>
+                    <p>
+                      
+                        <div class="social-wrap a">
+    		<button id="facebook" onclick="Login()">Sign in with Facebook</button>
+    		
+    
+</div>
+<div id="message" style="display: none;">
+
+
+</div>
+
+<div class='popbox' id="popupId">
+    <a class='open' href='#'>
+      <img src='plus.png' style='width:14px;position:relative;'> Comment!
+    </a>
+
+    <div class='collapse'>
+      <div class='box'>
+        <div class='arrow'></div>
+        <div class='arrow-border'></div>
+
+        <form action="comments.jsp" method="post" id="form1">
+              
+          <div class="input">
+            <textarea name="cm-f-tlhll" id="area1" placeholder="Comments" name="commentArea" ></textarea>
+          </div>
+          <input type="submit" value="Comment" onclick="go()"/> <a href="#" class="close">Cancel</a>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+                    </p>
+                    <p> <u>Nothing</u> gets posted on your wall. Only Facebook name & photo are used.</p>
+                </div>
+            </div>
+
+            <div class="grid4">
+                <ul class="donationDetails highlightBoxWhite">
+                    <li class="specialSec">
+                        <p class="pull-0-im f10">
+                            <span class="txt-left"><i class="fa fa-globe"></i> Bangalore, KA</span>  <span class="txt-right pull-right"><i class="fa fa-tag"></i> Life Threatening</span>
+                        </p>
+                    </li>
+                    <li class="pull-down-20">
+                        <p>Rs. <strong>100,000</strong> of 3,00,000</p>
+                    </li>
+                    <li class="pull-down-10">
+                        <p class="progressBar">
+                            <span class="raisedBar" style="width:20%"></span> 
+                        </p>
+                    </li>
+                    <li class="helpText txt-center">Raised By 120 Angels in 1 month</li>
+                    <li class="pull-down-20 txt-center">
+                        <button class="submitBtn">Donate Now</button>
+                    </li>
+                    <li class="pull-down-20 txt-center">
+                        <button class="submitBtn">Volunteer Time</button>
+                    </li>
+                </ul>
+                <ul class="gridWrapper highlightBoxWhite pull-down-20">
+                    <li class="grid6">
+                        <ul>
+                            <li><span class="facebookLikesCount">543</span>
+                            </li>
+                            <li>
+                                <button class="facebookShareButton"><i class="fa fa-facebook"></i> Share</button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="grid6">
+                        <ul>
+                            <li><span class="tweetsCount">342</span>
+                            </li>
+                            <li>
+                                <button class="twitterShareButton"><i class="fa fa-twitter"></i> Tweet</button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="gridWrapper highlightBoxWhite pull-down-20">
+                    <li class="grid3">
+                        <img src="" alt="" />
+                    </li>
+                    <li class="grid9">
+                        <p>Referred November 8,2014
+                            <br/>
+                            <span>Vaatsalya Hospitals</span>
+                        </p>
+                    </li>
+                </ul>
+                <div class="section highlightBoxWhite pull-down-20">
+                    <ul class="gridWrapper">
+                        <li class="grid7">120 Donations</li>
+                        <li class="grid5">
+                            <select name="" id="">
+                                <option value="">Recent</option>
+                            </select>
+                        </li>
+                    </ul>
+                    <ul class="section">
+                        <li class="pull-down-20">
+                            <ul class="section donationUpdateSec">
+                                <li class="amountDonated">Rs.100,000</li>
+                                <li class="donatedPersonName">Chaitanya & Vaishali</li>
+                                <li class="donatedTime"><i class="fa fa-clock-o"></i> 1 hour ago</li>
+                                <li class="donorComments">
+                                    <p>Dear Mohan, Wishing you a speedy recovery! Get Well Soon!</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="pull-down-20">
+                            <ul class="section donationUpdateSec">
+                                <li class="amountDonated">Rs.100,000</li>
+                                <li class="donatedPersonName">Chaitanya & Vaishali</li>
+                                <li class="donatedTime"><i class="fa fa-clock-o"></i> 1 hour ago</li>
+                                <li class="donorComments">
+                                    <p>Dear Mohan, Wishing you a speedy recovery! Get Well Soon!</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="pull-down-20">
+                            <ul class="section donationUpdateSec">
+                                <li class="amountDonated">Rs.100,000</li>
+                                <li class="donatedPersonName">Chaitanya & Vaishali</li>
+                                <li class="donatedTime"><i class="fa fa-clock-o"></i> 1 hour ago</li>
+                                <li class="donorComments">
+                                    <p>Dear Mohan, Wishing you a speedy recovery! Get Well Soon!</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li>1-10 of 120 Donations</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="js/lib/jquery.min.js"></script>
+<script src="js/searchPage.js"></script>
+<script src="js/lib/mustache.js"></script>
+<script src="js/popbox.js"></script>
+<script src="js/fbComments.js"></script>
+
+<script type="text/javascript">
+    $(function() {
+        $('#patient_details_tab > li').click(function() {
+            var tabElement = $(this).attr('data-bind');
+            $('.tabContentSectionWrapper').hide();
+            $(tabElement).fadeIn();
+        });
+    });
+</script>
+<script type='text/javascript' charset='utf-8'>
+    $(document).ready(function(){
+    	//console.log($('#fblog').val());
+    	//alert($('#fblog').val());
+    	
+      $('.popbox').popbox();
+    });
+  </script>
+
+</html>
