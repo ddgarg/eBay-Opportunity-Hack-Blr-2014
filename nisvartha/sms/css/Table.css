@@ -1,0 +1,101 @@
+.pg-normal {
+	color: #000000;
+	font-size: 15px;
+	cursor: pointer;
+	background: #D0B389;
+	padding: 2px 4px 2px 4px;
+}
+.pg-normal2 {
+	color: #000000;
+	font-size: 15px;
+	cursor: pointer;
+	background: #D0B389;
+	padding: 2px 4px 2px 4px;
+}
+.pg-selected {
+	color: #fff;
+	font-size: 15px;
+	background: #000000;
+	padding: 2px 4px 2px 4px;
+}
+.pg-selected2 {
+	color: yellow;
+	font-size: 15px;
+	background: blue;
+	padding: 2px 4px 2px 4px;
+}
+table.yui {
+	border-collapse: collapse;
+	font-size: small;
+}
+table.yui td {
+	padding: 8px 10px 8px 10px;
+	border-bottom: solid 1px #edf6f9;
+	background-color: #edf6f9;
+}
+table.yui td.odd {
+	background-color: #a5d5e2; /*F9FAD0 even rows colors */
+}
+table.yui th {
+	border-bottom: solid 1px #edf6f9;
+	text-align: left;
+	padding: 8px 10px 8px 10px;
+	height: auto;
+	color: #fff;
+	font-weight: bold;
+	background: #276a7c;
+}
+table.yui td {
+	background-color: #E1ECF9;
+}
+table.yui td.odd {
+	vertical-align: middle;
+	background-color: #a5d5e2;
+	border: none;
+}
+table.member {
+	border-collapse: collapse;
+	padding: 0;
+	margin: 0;
+	/*border-top:2px solid #f2730a;*/
+
+	border-top: solid 1px #d2f3fd;
+}
+table.member td {
+	padding: 3px 0px 3px 7px;
+	border-bottom: solid 1px #d2f3fd;
+	vertical-align: top;
+	font-size: 12px;
+	background-color: #ffffff;
+}
+table.member td p {
+	font-size: 13px;
+	margin: 0;
+	font-weight: bold;
+	color: #333;
+	padding: 0;
+	margin-bottom: 3px;
+}
+table.member td img {
+	border: 1px solid #ccc;
+}
+table.member td p.company {
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	color: #666;
+}
+table.member td p.company strong {
+	color: #003;
+	font-size: 13px;
+}
+table.member td p span {
+	display: block;
+	margin-top: -3px;
+	font-weight: bold;
+	font-size: 11px;
+}
+table.member td.odd {
+	background-color: #ebf8fc;
+}
