@@ -8,5 +8,30 @@
     <string name="donate">Donate</string>
     <string name="title_activity_request">RequestActivity</string>
     <string name="title_activity_subscribe">SubscribeActivity</string>
+    <string name="bloodtype">Blood Type: </string>
+    <string name="units">Blood Units: </string>
+    <string name="PatientName">PatientName: </string>
+    <string name="Hospital">Hospital: </string>
+    <string name="ContactPerson">Contact Person: </string>
+    <string name="ContactNo">Contact No: </string>
+    <string name="Date">Date: </string>
+    <string name="City">City: </string>
+
+    <string-array name="bloodtype">
+        <item>O+ve</item>
+        <item>O-ve</item>
+        <item>Indonesia</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Singapore</item>
+        <item>New Zealand</item>
+        <item>India</item>
+    </string-array>
+
+    
+    
+    <string name="title_activity_donor_item">DonorItemActivity</string>
+    <string name="register">Register to save life</string>
+    
 
 </resources>

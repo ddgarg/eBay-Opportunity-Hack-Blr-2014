@@ -16,5 +16,14 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    
+    <style name="WhiteBoldFont" parent="@android:style/TextAppearance.Small">
+ 		<item name="android:textColor">#FFFFFF</item>
+    	<item name="android:textStyle">bold</item>
+    </style>
+    
+     <style name="WhiteFont" parent="@android:style/TextAppearance.Small">
+ 		<item name="android:textColor">#FFFFFF</item>
+    </style>
 
 </resources>

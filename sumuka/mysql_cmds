@@ -1,0 +1,5 @@
+create user 'scott@localhost' identified by 'tiger';
+create database sumukha;
+grant all on sumukha.* to 'scott@localhost';
+flush privileges;
+
